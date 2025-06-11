@@ -23,7 +23,10 @@ export default async function Home() {
     collection: 'banners',
     limit: 10, // Adjust limit as needed
   })
-
+  const projects = await payload.find({
+    collection: 'projects',
+    limit: 3, // Adjust limit as needed
+  })
   return (
     <div className="flex flex-col min-h-screen">
       <Header />
@@ -50,7 +53,7 @@ export default async function Home() {
         </section> */}
         <ServicesSection />
         <AboutSection />
-        <PortfolioSection />
+        <PortfolioSection projects={projects.docs} />
         <TestimonialsSection />
         <ContactSection />
       </main>

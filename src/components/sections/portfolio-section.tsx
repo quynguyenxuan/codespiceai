@@ -7,30 +7,31 @@ import { useLanguage } from '@/contexts/language-context'
 import { motion } from 'framer-motion'
 import { fadeIn, staggerContainer, zoomIn } from '@/utils/animations'
 import Link from 'next/link'
+import { Project } from '@/payload-types'
 
-export function PortfolioSection() {
+export function PortfolioSection({ projects }: { projects: Project[] }) {
   const { t } = useLanguage()
 
-  const projects = [
-    {
-      id: 'project1',
-      imageSrc: '/images/project-ai-chatbot.png',
-      title: t('portfolio.project1'),
-      description: t('portfolio.project1Desc'),
-    },
-    {
-      id: 'project2',
-      imageSrc: '/images/project-ecommerce.jpg',
-      title: t('portfolio.project2'),
-      description: t('portfolio.project2Desc'),
-    },
-    {
-      id: 'project3',
-      imageSrc: '/images/project-mobile-app.png',
-      title: t('portfolio.project3'),
-      description: t('portfolio.project3Desc'),
-    },
-  ]
+  // const projects = [
+  //   {
+  //     id: 'project1',
+  //     imageSrc: '/images/project-ai-chatbot.png',
+  //     title: t('portfolio.project1'),
+  //     description: t('portfolio.project1Desc'),
+  //   },
+  //   {
+  //     id: 'project2',
+  //     imageSrc: '/images/project-ecommerce.jpg',
+  //     title: t('portfolio.project2'),
+  //     description: t('portfolio.project2Desc'),
+  //   },
+  //   {
+  //     id: 'project3',
+  //     imageSrc: '/images/project-mobile-app.png',
+  //     title: t('portfolio.project3'),
+  //     description: t('portfolio.project3Desc'),
+  //   },
+  // ]
 
   return (
     <section
@@ -52,7 +53,7 @@ export function PortfolioSection() {
           className="flex flex-col items-center justify-center space-y-4 text-center"
         >
           <div className="space-y-2">
-            <div className="inline-block rounded-lg bg-gradient-to-r from-primary-100 to-secondary-100 px-3 py-1 text-sm dark:from-primary-900 dark:to-secondary-900">
+            <div className="inline-block rounded-lg bg-gradient-to-r from-primary-500 to-secondary-100 px-3 py-1 text-sm dark:from-primary-900 dark:to-secondary-900">
               {t('portfolio.title')}
             </div>
             <h2 className="text-3xl font-bold tracking-tighter md:text-4xl/tight gold-silver-gradient">

@@ -49,24 +49,8 @@ export const Projects: CollectionConfig<'projects'> = {
   },
   orderable: true,
   admin: {
-    defaultColumns: ['title', 'slug', 'updatedAt'],
-    livePreview: {
-      url: ({ data, req }) => {
-        const path = generatePreviewPath({
-          slug: typeof data?.slug === 'string' ? data.slug : '',
-          collection: 'posts',
-          req,
-        })
+    defaultColumns: ['title', 'updatedAt'],
 
-        return path
-      },
-    },
-    preview: (data, { req }) =>
-      generatePreviewPath({
-        slug: typeof data?.slug === 'string' ? data.slug : '',
-        collection: 'posts',
-        req,
-      }),
     useAsTitle: 'title',
   },
   fields: [
@@ -75,6 +59,36 @@ export const Projects: CollectionConfig<'projects'> = {
       type: 'text',
       required: true,
       localized: true,
+    },
+    {
+      name: 'description',
+      type: 'text',
+      localized: true,
+    },
+    {
+      name: 'fullDescription',
+      type: 'text',
+      localized: true,
+    },
+    {
+      name: 'image',
+      type: 'upload',
+      relationTo: 'media',
+    },
+    {
+      name: 'client',
+      type: 'text',
+      localized: true,
+    },
+    {
+      name: 'category',
+      type: 'relationship',
+      relationTo: 'categories',
+      hasMany: true,
+    },
+    {
+      name: 'date',
+      type: 'date',
     },
     {
       type: 'tabs',
@@ -102,7 +116,6 @@ export const Projects: CollectionConfig<'projects'> = {
                 },
               }),
               label: false,
-              required: true,
             },
           ],
           label: 'Content',
@@ -166,59 +179,7 @@ export const Projects: CollectionConfig<'projects'> = {
         },
       ],
     },
-    {
-      name: 'publishedAt',
-      type: 'date',
-      admin: {
-        date: {
-          pickerAppearance: 'dayAndTime',
-        },
-        position: 'sidebar',
-      },
-      hooks: {
-        beforeChange: [
-          ({ siblingData, value }) => {
-            if (siblingData._status === 'published' && !value) {
-              return new Date()
-            }
-            return value
-          },
-        ],
-      },
-    },
-    {
-      name: 'authors',
-      type: 'relationship',
-      admin: {
-        position: 'sidebar',
-      },
-      hasMany: true,
-      relationTo: 'users',
-    },
-    // This field is only used to populate the user data via the `populateAuthors` hook
-    // This is because the `user` collection has access control locked to protect user privacy
-    // GraphQL will also not return mutated user data that differs from the underlying schema
-    {
-      name: 'populatedAuthors',
-      type: 'array',
-      access: {
-        update: () => false,
-      },
-      admin: {
-        disabled: true,
-        readOnly: true,
-      },
-      fields: [
-        {
-          name: 'id',
-          type: 'text',
-        },
-        {
-          name: 'name',
-          type: 'text',
-        },
-      ],
-    },
+
     ...slugField(),
   ],
   hooks: {
@@ -226,5 +187,4 @@ export const Projects: CollectionConfig<'projects'> = {
     // afterRead: [populateAuthors],
     // afterDelete: [revalidateDelete],
   },
-  
 }

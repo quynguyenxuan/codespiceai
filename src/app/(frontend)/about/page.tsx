@@ -238,7 +238,7 @@ export default function AboutPage() {
         </section>
 
         {/* Team Section */}
-        <section className="py-16 md:py-24 bg-gray-50 dark:bg-gray-900">
+        {/* <section className="py-16 md:py-24 bg-gray-50 dark:bg-gray-900">
           <div className="container px-4 md:px-6">
             <div className="text-center mb-16">
               <div className="inline-block rounded-lg bg-gradient-to-r from-primary-500 to-secondary-100 px-3 py-1 text-sm dark:from-primary-900 dark:to-secondary-900 mb-4">
@@ -276,7 +276,7 @@ export default function AboutPage() {
               ))}
             </div>
           </div>
-        </section>
+        </section> */}
 
         {/* Stats Section */}
         <section className="py-16 md:py-24 bg-white dark:bg-gray-950">

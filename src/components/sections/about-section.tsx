@@ -6,6 +6,7 @@ import { CheckCircle } from 'lucide-react'
 import { useLanguage } from '@/contexts/language-context'
 import { motion } from 'framer-motion'
 import { fadeIn, staggerContainer, slideIn } from '@/utils/animations'
+import Link from 'next/link'
 
 export function AboutSection() {
   const { t } = useLanguage()
@@ -62,9 +63,11 @@ export function AboutSection() {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              <Button className="bg-gradient-to-r from-primary-500 to-secondary-500 hover:opacity-90 transition-opacity">
-                {t('about.learnMore')}
-              </Button>
+              <Link href="/about">
+                <Button className="bg-gradient-to-r from-primary-500 to-secondary-500 hover:opacity-90 transition-opacity">
+                  {t('about.learnMore')}
+                </Button>
+              </Link>
             </motion.div>
           </motion.div>
           <motion.div

@@ -809,8 +809,14 @@ export interface Project {
   id: number;
   _order?: string | null;
   title: string;
+  description?: string | null;
+  fullDescription?: string | null;
+  image?: (number | null) | Media;
+  client?: string | null;
+  category?: (number | Category)[] | null;
+  date?: string | null;
   heroImage?: (number | null) | Media;
-  content: {
+  content?: {
     root: {
       type: string;
       children: {
@@ -824,7 +830,7 @@ export interface Project {
       version: number;
     };
     [k: string]: unknown;
-  };
+  } | null;
   relatedProjects?: (number | Project)[] | null;
   categories?: (number | Category)[] | null;
   meta?: {
@@ -835,14 +841,6 @@ export interface Project {
     image?: (number | null) | Media;
     description?: string | null;
   };
-  publishedAt?: string | null;
-  authors?: (number | User)[] | null;
-  populatedAuthors?:
-    | {
-        id?: string | null;
-        name?: string | null;
-      }[]
-    | null;
   slug?: string | null;
   slugLock?: boolean | null;
   updatedAt: string;
@@ -1567,6 +1565,12 @@ export interface MembersSelect<T extends boolean = true> {
 export interface ProjectsSelect<T extends boolean = true> {
   _order?: T;
   title?: T;
+  description?: T;
+  fullDescription?: T;
+  image?: T;
+  client?: T;
+  category?: T;
+  date?: T;
   heroImage?: T;
   content?: T;
   relatedProjects?: T;
@@ -1577,14 +1581,6 @@ export interface ProjectsSelect<T extends boolean = true> {
         title?: T;
         image?: T;
         description?: T;
-      };
-  publishedAt?: T;
-  authors?: T;
-  populatedAuthors?:
-    | T
-    | {
-        id?: T;
-        name?: T;
       };
   slug?: T;
   slugLock?: T;

@@ -24,6 +24,7 @@ import { Services } from './collections/Services'
 import { Contacts } from './collections/Contacts'
 import { Banners } from './collections/Banners'
 import { UserRoles } from './collections/UserRoles/index'
+import { seed } from './seed'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -102,6 +103,11 @@ export default buildConfig({
   sharp,
   typescript: {
     outputFile: path.resolve(dirname, 'payload-types.ts'),
+  },
+  onInit: async (payload) => {
+    // if (process.env.SEED_DB) {
+    seed(payload)
+    // }
   },
   jobs: {
     access: {

@@ -56,7 +56,7 @@ export function HeroBanner({ banners }: { banners: Banner[] }) {
               </Button>
             </motion.div>
 
-            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+            {/* <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <Button
                 size="lg"
                 variant="outline"
@@ -64,7 +64,7 @@ export function HeroBanner({ banners }: { banners: Banner[] }) {
               >
                 {t('heroBanner.secondaryAction')}
               </Button>
-            </motion.div>
+            </motion.div> */}
           </div>
         </motion.div>
 

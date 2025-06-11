@@ -1,15 +1,15 @@
-"use client"
+'use client'
 
-import { useLanguage } from "@/contexts/language-context"
-import { Header } from "@/components/layout/header"
-import { Footer } from "@/components/layout/footer"
-import { Button } from "@/components/ui/button"
-import { motion } from "framer-motion"
-import { fadeIn } from "@/utils/animations"
-import Image from "next/image"
-import Link from "next/link"
-import { ArrowLeft, Calendar, User, Code, ExternalLink, ArrowRight } from "lucide-react"
-import { useParams, useRouter } from "next/navigation"
+import { useLanguage } from '@/contexts/language-context'
+import { Header } from '@/components/layout/header'
+import { Footer } from '@/components/layout/footer'
+import { Button } from '@/components/ui/button'
+import { motion } from 'framer-motion'
+import { fadeIn } from '@/utils/animations'
+import Image from 'next/image'
+import Link from 'next/link'
+import { ArrowLeft, Calendar, User, Code, ExternalLink, ArrowRight } from 'lucide-react'
+import { useParams, useRouter } from 'next/navigation'
 
 export default function ProjectDetailPage() {
   const { t } = useLanguage()
@@ -19,70 +19,70 @@ export default function ProjectDetailPage() {
 
   const projects = [
     {
-      id: "project1",
-      title: t("projects.project1Title"),
-      category: "AI",
-      description: t("projects.project1Desc"),
-      fullDescription: t("projects.project1FullDesc"),
-      image: "/placeholder.svg?height=600&width=1200",
-      tech: t("projects.project1Tech"),
-      client: t("projects.project1Client"),
-      date: t("projects.project1Date"),
+      id: 'project1',
+      title: t('projects.project1Title'),
+      category: 'AI',
+      description: t('projects.project1Desc'),
+      fullDescription: t('projects.project1FullDesc'),
+      image: '/placeholder.svg?height=600&width=1200',
+      tech: t('projects.project1Tech'),
+      client: t('projects.project1Client'),
+      date: t('projects.project1Date'),
     },
     {
-      id: "project2",
-      title: t("projects.project2Title"),
-      category: "Web",
-      description: t("projects.project2Desc"),
-      fullDescription: t("projects.project2FullDesc"),
-      image: "/placeholder.svg?height=600&width=1200",
-      tech: t("projects.project2Tech"),
-      client: t("projects.project2Client"),
-      date: t("projects.project2Date"),
+      id: 'project2',
+      title: t('projects.project2Title'),
+      category: 'Web',
+      description: t('projects.project2Desc'),
+      fullDescription: t('projects.project2FullDesc'),
+      image: '/placeholder.svg?height=600&width=1200',
+      tech: t('projects.project2Tech'),
+      client: t('projects.project2Client'),
+      date: t('projects.project2Date'),
     },
     {
-      id: "project3",
-      title: t("projects.project3Title"),
-      category: "Mobile",
-      description: t("projects.project3Desc"),
-      fullDescription: t("projects.project3FullDesc"),
-      image: "/placeholder.svg?height=600&width=1200",
-      tech: t("projects.project3Tech"),
-      client: t("projects.project3Client"),
-      date: t("projects.project3Date"),
+      id: 'project3',
+      title: t('projects.project3Title'),
+      category: 'Mobile',
+      description: t('projects.project3Desc'),
+      fullDescription: t('projects.project3FullDesc'),
+      image: '/placeholder.svg?height=600&width=1200',
+      tech: t('projects.project3Tech'),
+      client: t('projects.project3Client'),
+      date: t('projects.project3Date'),
     },
     {
-      id: "project4",
-      title: t("projects.project4Title"),
-      category: "Web",
-      description: t("projects.project4Desc"),
-      fullDescription: t("projects.project4FullDesc"),
-      image: "/placeholder.svg?height=600&width=1200",
-      tech: t("projects.project4Tech"),
-      client: t("projects.project4Client"),
-      date: t("projects.project4Date"),
+      id: 'project4',
+      title: t('projects.project4Title'),
+      category: 'Web',
+      description: t('projects.project4Desc'),
+      fullDescription: t('projects.project4FullDesc'),
+      image: '/placeholder.svg?height=600&width=1200',
+      tech: t('projects.project4Tech'),
+      client: t('projects.project4Client'),
+      date: t('projects.project4Date'),
     },
     {
-      id: "project5",
-      title: t("projects.project5Title"),
-      category: "AI",
-      description: t("projects.project5Desc"),
-      fullDescription: t("projects.project5FullDesc"),
-      image: "/placeholder.svg?height=600&width=1200",
-      tech: t("projects.project5Tech"),
-      client: t("projects.project5Client"),
-      date: t("projects.project5Date"),
+      id: 'project5',
+      title: t('projects.project5Title'),
+      category: 'AI',
+      description: t('projects.project5Desc'),
+      fullDescription: t('projects.project5FullDesc'),
+      image: '/placeholder.svg?height=600&width=1200',
+      tech: t('projects.project5Tech'),
+      client: t('projects.project5Client'),
+      date: t('projects.project5Date'),
     },
     {
-      id: "project6",
-      title: t("projects.project6Title"),
-      category: "AI",
-      description: t("projects.project6Desc"),
-      fullDescription: t("projects.project6FullDesc"),
-      image: "/placeholder.svg?height=600&width=1200",
-      tech: t("projects.project6Tech"),
-      client: t("projects.project6Client"),
-      date: t("projects.project6Date"),
+      id: 'project6',
+      title: t('projects.project6Title'),
+      category: 'AI',
+      description: t('projects.project6Desc'),
+      fullDescription: t('projects.project6FullDesc'),
+      image: '/placeholder.svg?height=600&width=1200',
+      tech: t('projects.project6Tech'),
+      client: t('projects.project6Client'),
+      date: t('projects.project6Date'),
     },
   ]
 
@@ -95,7 +95,7 @@ export default function ProjectDetailPage() {
         <main className="flex-1 flex items-center justify-center">
           <div className="text-center">
             <h1 className="text-2xl font-bold mb-4">Project not found</h1>
-            <Button onClick={() => router.push("/projects")}>
+            <Button onClick={() => router.push('/projects')}>
               <ArrowLeft className="mr-2 h-4 w-4" />
               Back to Projects
             </Button>
@@ -107,7 +107,9 @@ export default function ProjectDetailPage() {
   }
 
   // Get related projects (same category, excluding current project)
-  const relatedProjects = projects.filter((p) => p.category === project.category && p.id !== project.id).slice(0, 3)
+  const relatedProjects = projects
+    .filter((p) => p.category === project.category && p.id !== project.id)
+    .slice(0, 3)
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -115,12 +117,22 @@ export default function ProjectDetailPage() {
       <main className="flex-1">
         {/* Hero Section */}
         <section className="relative w-full h-[400px] md:h-[500px] overflow-hidden">
-          <Image src={project.image || "/placeholder.svg"} alt={project.title} fill className="object-cover" priority />
+          <Image
+            src={project.image || '/placeholder.svg'}
+            alt={project.title}
+            fill
+            className="object-cover"
+            priority
+          />
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent" />
 
           <div className="absolute inset-0 flex items-end">
             <div className="container px-4 md:px-6 pb-16">
-              <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+              >
                 <Link href="/projects">
                   <Button
                     variant="outline"
@@ -128,7 +140,7 @@ export default function ProjectDetailPage() {
                     className="mb-4 bg-white/10 text-white border-white/20 hover:bg-white/20"
                   >
                     <ArrowLeft className="mr-2 h-4 w-4" />
-                    {t("projects.allProjects")}
+                    {t('projects.allProjects')}
                   </Button>
                 </Link>
                 <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold gold-silver-gradient mb-4">
@@ -148,7 +160,7 @@ export default function ProjectDetailPage() {
                 initial="hidden"
                 whileInView="show"
                 viewport={{ once: true, amount: 0.25 }}
-                variants={fadeIn("right", 0.3)}
+                variants={fadeIn('right', 0.3)}
                 className="md:col-span-2"
               >
                 <h2 className="text-2xl font-bold mb-6">Project Overview</h2>
@@ -177,7 +189,7 @@ export default function ProjectDetailPage() {
                 initial="hidden"
                 whileInView="show"
                 viewport={{ once: true, amount: 0.25 }}
-                variants={fadeIn("left", 0.3)}
+                variants={fadeIn('left', 0.3)}
                 className="md:col-span-1"
               >
                 <div className="bg-gray-50 dark:bg-gray-800 rounded-lg p-6">
@@ -232,7 +244,7 @@ export default function ProjectDetailPage() {
         {relatedProjects.length > 0 && (
           <section className="py-16 md:py-24 bg-gray-50 dark:bg-gray-900">
             <div className="container px-4 md:px-6">
-              <h2 className="text-2xl font-bold mb-10">{t("projects.relatedProjects")}</h2>
+              <h2 className="text-2xl font-bold mb-10">{t('projects.relatedProjects')}</h2>
 
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {relatedProjects.map((relatedProject, index) => (
@@ -241,12 +253,12 @@ export default function ProjectDetailPage() {
                     initial="hidden"
                     whileInView="show"
                     viewport={{ once: true, amount: 0.25 }}
-                    variants={fadeIn("up", 0.1 * index + 0.3)}
+                    variants={fadeIn('up', 0.1 * index + 0.3)}
                     className="group bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow"
                   >
                     <div className="relative h-[200px] overflow-hidden">
                       <Image
-                        src={relatedProject.image || "/placeholder.svg"}
+                        src={relatedProject.image || '/placeholder.svg'}
                         alt={relatedProject.title}
                         fill
                         className="object-cover transition-transform duration-500 group-hover:scale-110"
@@ -259,10 +271,16 @@ export default function ProjectDetailPage() {
                     </div>
                     <div className="p-6">
                       <h3 className="text-xl font-bold mb-2">{relatedProject.title}</h3>
-                      <p className="text-gray-500 dark:text-gray-400 mb-4">{relatedProject.description}</p>
+                      <p className="text-gray-500 dark:text-gray-400 mb-4">
+                        {relatedProject.description}
+                      </p>
                       <Link href={`/projects/${relatedProject.id}`}>
-                        <Button variant="outline" size="sm" className="text-primary-500 border-primary-500">
-                          {t("projects.viewDetails")}
+                        <Button
+                          variant="outline"
+                          size="sm"
+                          className="text-primary-500 border-primary-500"
+                        >
+                          {t('projects.viewDetails')}
                           <ArrowRight className="ml-2 h-4 w-4" />
                         </Button>
                       </Link>
