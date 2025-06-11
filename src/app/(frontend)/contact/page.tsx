@@ -90,7 +90,7 @@ export default function ContactPage() {
       address: t('contact.office1Address'),
       phone: t('contact.office1Phone'),
       email: t('contact.office1Email'),
-      image: '/media/office-location.jpg',
+      image: '/images/office-location.jpg',
     },
     // {
     //   title: t("contact.office2Title"),

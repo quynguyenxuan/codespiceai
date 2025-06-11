@@ -79,9 +79,9 @@ export function HeroBanner({ banners }: { banners: Banner[] }) {
             <div className="flex items-center space-x-3">
               <div className="flex -space-x-2">
                 {[
-                  '/media/client-avatar-1.jpg',
-                  '/media/client-avatar-2.jpg',
-                  '/media/client-avatar-3.jpg',
+                  '/images/client-avatar-1.jpg',
+                  '/images/client-avatar-2.jpg',
+                  '/images/client-avatar-3.jpg',
                 ].map((src, i) => (
                   <div
                     key={i}

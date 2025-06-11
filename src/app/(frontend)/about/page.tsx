@@ -41,25 +41,25 @@ export default function AboutPage() {
       name: t('about.member1Name'),
       position: t('about.member1Position'),
       description: t('about.member1Description'),
-      image: '/media/team-member-1.jpg',
+      image: '/images/team-member-1.jpg',
     },
     {
       name: t('about.member2Name'),
       position: t('about.member2Position'),
       description: t('about.member2Description'),
-      image: '/media/team-member-2.jpg',
+      image: '/images/team-member-2.jpg',
     },
     {
       name: t('about.member3Name'),
       position: t('about.member3Position'),
       description: t('about.member3Description'),
-      image: '/media/team-member-3.jpg',
+      image: '/images/team-member-3.jpg',
     },
     {
       name: t('about.member4Name'),
       position: t('about.member4Name'),
       description: t('about.member4Description'),
-      image: '/media/team-member-4.jpg',
+      image: '/images/team-member-4.jpg',
     },
   ]
 

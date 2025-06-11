@@ -44,7 +44,7 @@ export default function ServicesPage() {
         t('services.webFeature3'),
         t('services.webFeature4'),
       ],
-      image: '/media/service-web-development.jpg',
+      image: '/images/service-web-development.jpg',
     },
     {
       icon: <Zap className="h-6 w-6 text-white" />,
@@ -56,7 +56,7 @@ export default function ServicesPage() {
         t('services.aiFeature3'),
         t('services.aiFeature4'),
       ],
-      image: '/media/service-ai-development.jpg',
+      image: '/images/service-ai-development.jpg',
     },
     {
       icon: <Briefcase className="h-6 w-6 text-white" />,
@@ -68,7 +68,7 @@ export default function ServicesPage() {
         t('services.mobileFeature3'),
         t('services.mobileFeature4'),
       ],
-      image: '/media/service-mobile-development.jpg',
+      image: '/images/service-mobile-development.jpg',
     },
     {
       icon: <Code className="h-6 w-6 text-white" />,
@@ -80,7 +80,7 @@ export default function ServicesPage() {
         t('services.backendFeature3'),
         t('services.backendFeature4'),
       ],
-      image: '/media/service-backend-development.jpg',
+      image: '/images/service-backend-development.jpg',
     },
     {
       icon: <CheckCircle className="h-6 w-6 text-white" />,
@@ -92,7 +92,7 @@ export default function ServicesPage() {
         t('services.qaFeature3'),
         t('services.qaFeature4'),
       ],
-      image: '/media/service-qa-testing.jpg',
+      image: '/images/service-qa-testing.jpg',
     },
     {
       icon: <MessageSquare className="h-6 w-6 text-white" />,
@@ -104,7 +104,7 @@ export default function ServicesPage() {
         t('services.consultingFeature3'),
         t('services.consultingFeature4'),
       ],
-      image: '/media/service-consulting.jpg',
+      image: '/images/service-consulting.jpg',
     },
   ]
 
