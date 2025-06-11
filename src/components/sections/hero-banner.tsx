@@ -16,7 +16,7 @@ export function HeroBanner({ banners }: { banners: Banner[] }) {
       {/* Background Image */}
       <div className="absolute inset-0">
         <Image
-          src="/images/banner.jpg"
+          src="/images/banner-programming-ai.jpg"
           alt="Hero Banner - CodeSpiceAI Development Team"
           fill
           className="object-cover"

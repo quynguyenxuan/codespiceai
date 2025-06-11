@@ -41,25 +41,25 @@ export default function AboutPage() {
       name: t('about.member1Name'),
       position: t('about.member1Position'),
       description: t('about.member1Description'),
-      image: '/placeholder.svg?height=300&width=300',
+      image: '/media/team-member-1.jpg',
     },
     {
       name: t('about.member2Name'),
       position: t('about.member2Position'),
       description: t('about.member2Description'),
-      image: '/placeholder.svg?height=300&width=300',
+      image: '/media/team-member-2.jpg',
     },
     {
       name: t('about.member3Name'),
       position: t('about.member3Position'),
       description: t('about.member3Description'),
-      image: '/placeholder.svg?height=300&width=300',
+      image: '/media/team-member-3.jpg',
     },
     {
       name: t('about.member4Name'),
       position: t('about.member4Name'),
       description: t('about.member4Description'),
-      image: '/placeholder.svg?height=300&width=300',
+      image: '/media/team-member-4.jpg',
     },
   ]
 
@@ -94,7 +94,7 @@ export default function AboutPage() {
         <section className="relative w-full py-20 md:py-24 lg:py-32 bg-gradient-to-r from-primary-900 via-accent-900 to-secondary-900 overflow-hidden">
           <div className="absolute inset-0 opacity-20">
             <Image
-              src="/placeholder.svg?height=600&width=1920"
+              src="/images/about-hero-background.jpg"
               alt="About background"
               fill
               className="object-cover"
@@ -147,7 +147,7 @@ export default function AboutPage() {
                 className="relative h-[300px] md:h-[400px] rounded-lg overflow-hidden shadow-xl"
               >
                 <Image
-                  src="/placeholder.svg?height=400&width=600"
+                  src="/images/our-story.jpg"
                   alt="Our Story"
                   fill
                   className="object-cover transition-transform duration-500 hover:scale-105"
@@ -323,7 +323,7 @@ export default function AboutPage() {
                 className="relative h-[300px] md:h-[400px] rounded-lg overflow-hidden shadow-xl"
               >
                 <Image
-                  src="/placeholder.svg?height=400&width=600"
+                  src="/images/join-our-team.jpg"
                   alt="Join Our Team"
                   fill
                   className="object-cover transition-transform duration-500 hover:scale-105"
@@ -360,7 +360,7 @@ export default function AboutPage() {
         <section className="py-16 md:py-24 bg-gradient-to-r from-primary-900 via-accent-900 to-secondary-900 relative overflow-hidden">
           <div className="absolute inset-0 opacity-20">
             <Image
-              src="/placeholder.svg?height=400&width=1920"
+              src="/images/banner-programming-ai.jpg"
               alt="CTA background"
               fill
               className="object-cover"

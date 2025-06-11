@@ -90,7 +90,7 @@ export default function ContactPage() {
       address: t('contact.office1Address'),
       phone: t('contact.office1Phone'),
       email: t('contact.office1Email'),
-      image: '/placeholder.svg?height=300&width=400',
+      image: '/media/office-location.jpg',
     },
     // {
     //   title: t("contact.office2Title"),
@@ -151,7 +151,7 @@ export default function ContactPage() {
         <section className="relative w-full py-20 md:py-24 lg:py-32 bg-gradient-to-r from-primary-900 via-accent-900 to-secondary-900 overflow-hidden">
           <div className="absolute inset-0 opacity-20">
             <Image
-              src="/placeholder.svg?height=600&width=1920"
+              src="/images/banner-programming-ai.jpg"
               alt="Contact background"
               fill
               className="object-cover"
@@ -378,7 +378,7 @@ export default function ContactPage() {
 
                 <div className="relative h-[300px] rounded-lg overflow-hidden shadow-md">
                   <Image
-                    src="/placeholder.svg?height=300&width=600&text=Map"
+                    src="/images/office-map.jpg"
                     alt="Office Location Map"
                     fill
                     className="object-cover"

@@ -16,13 +16,14 @@ import { Header } from './Header/config'
 import { plugins } from './plugins'
 import { defaultLexical } from '@/fields/defaultLexical'
 import { getServerSideURL } from './utilities/getURL'
-import { Reviews } from './collections/Reviews';
+import { Reviews } from './collections/Reviews'
 import { Questions } from './collections/Questions'
 import { Members } from './collections/Members'
 import { Projects } from './collections/Projects'
 import { Services } from './collections/Services'
 import { Contacts } from './collections/Contacts'
 import { Banners } from './collections/Banners'
+import { UserRoles } from './collections/UserRoles/index'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -40,7 +41,7 @@ export default buildConfig({
     importMap: {
       baseDir: path.resolve(dirname),
     },
-    
+
     user: Users.slug,
     livePreview: {
       breakpoints: [
@@ -66,9 +67,9 @@ export default buildConfig({
     },
   },
   localization: {
-      locales: ['en', 'vi'], // required
-      defaultLocale: 'vi', // required
-    },
+    locales: ['en', 'vi'], // required
+    defaultLocale: 'vi', // required
+  },
   // This config helps us configure global or default features that the other editors can inherit
   editor: defaultLexical,
   db: sqliteAdapter({
@@ -76,7 +77,21 @@ export default buildConfig({
       url: process.env.DATABASE_URI || '',
     },
   }),
-  collections: [Pages, Posts, Media, Categories, Users, Reviews, Questions, Members, Projects, Services, Contacts, Banners],
+  collections: [
+    Pages,
+    Posts,
+    Media,
+    Categories,
+    UserRoles,
+    Users,
+    Reviews,
+    Questions,
+    Members,
+    Projects,
+    Services,
+    Contacts,
+    Banners,
+  ],
   cors: [getServerSideURL()].filter(Boolean),
   globals: [Header, Footer],
   plugins: [

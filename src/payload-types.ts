@@ -71,6 +71,7 @@ export interface Config {
     posts: Post;
     media: Media;
     categories: Category;
+    'user-roles': UserRole;
     users: User;
     reviews: Review;
     questions: Question;
@@ -94,6 +95,7 @@ export interface Config {
     posts: PostsSelect<false> | PostsSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
     categories: CategoriesSelect<false> | CategoriesSelect<true>;
+    'user-roles': UserRolesSelect<false> | UserRolesSelect<true>;
     users: UsersSelect<false> | UsersSelect<true>;
     reviews: ReviewsSelect<false> | ReviewsSelect<true>;
     questions: QuestionsSelect<false> | QuestionsSelect<true>;
@@ -388,6 +390,7 @@ export interface Category {
 export interface User {
   id: number;
   name?: string | null;
+  roles?: (string | UserRole)[] | null;
   updatedAt: string;
   createdAt: string;
   email: string;
@@ -398,6 +401,19 @@ export interface User {
   loginAttempts?: number | null;
   lockUntil?: string | null;
   password?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "user-roles".
+ */
+export interface UserRole {
+  id: string;
+  status?: ('draft' | 'published') | null;
+  name?: string | null;
+  description?: string | null;
+  sort?: number | null;
+  updatedAt: string;
+  createdAt: string;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1097,6 +1113,10 @@ export interface PayloadLockedDocument {
         value: number | Category;
       } | null)
     | ({
+        relationTo: 'user-roles';
+        value: string | UserRole;
+      } | null)
+    | ({
         relationTo: 'users';
         value: number | User;
       } | null)
@@ -1471,10 +1491,24 @@ export interface CategoriesSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "user-roles_select".
+ */
+export interface UserRolesSelect<T extends boolean = true> {
+  id?: T;
+  status?: T;
+  name?: T;
+  description?: T;
+  sort?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "users_select".
  */
 export interface UsersSelect<T extends boolean = true> {
   name?: T;
+  roles?: T;
   updatedAt?: T;
   createdAt?: T;
   email?: T;

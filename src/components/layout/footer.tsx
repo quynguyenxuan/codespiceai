@@ -184,14 +184,14 @@ export function Footer() {
                   <Phone className="h-5 w-5 text-primary-300 mt-1 mr-3" />
                   <div>
                     <p className="text-white/80">+84 363 854 891</p>
-                    <p className="text-white/80">+84 987 654 321</p>
+                    <p className="text-white/80">+84 932 247 175</p>
                   </div>
                 </div>
                 <div className="flex items-start">
                   <Mail className="h-5 w-5 text-primary-300 mt-1 mr-3" />
                   <div>
                     <p className="text-white/80">xuanquy.cn1@gmail.com</p>
-                    <p className="text-white/80">support@codespiceai.com</p>
+                    <p className="text-white/80">giangsonftu@gmail.com</p>
                   </div>
                 </div>
                 <div className="flex items-start">
