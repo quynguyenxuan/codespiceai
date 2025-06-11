@@ -16,8 +16,8 @@ export function HeroBanner({ banners }: { banners: Banner[] }) {
       {/* Background Image */}
       <div className="absolute inset-0">
         <Image
-          src="/media/banner.jpg?height=1080&width=1920"
-          alt="Hero Banner"
+          src="/images/banner.jpg"
+          alt="Hero Banner - CodeSpiceAI Development Team"
           fill
           className="object-cover"
           priority
@@ -78,16 +78,21 @@ export function HeroBanner({ banners }: { banners: Banner[] }) {
           <div className="bg-white/10 backdrop-blur-md rounded-lg p-4 border border-white/20">
             <div className="flex items-center space-x-3">
               <div className="flex -space-x-2">
-                {[...Array(3)].map((_, i) => (
+                {[
+                  '/media/client-avatar-1.jpg',
+                  '/media/client-avatar-2.jpg',
+                  '/media/client-avatar-3.jpg',
+                ].map((src, i) => (
                   <div
                     key={i}
                     className="h-10 w-10 rounded-full bg-primary-500 border-2 border-white overflow-hidden"
                   >
                     <Image
-                      src={`/placeholder.svg?height=40&width=40&text=${i + 1}`}
+                      src={src}
                       width={40}
                       height={40}
-                      alt={`Client ${i + 1}`}
+                      alt={`Client ${i + 1} Avatar`}
+                      className="object-cover"
                     />
                   </div>
                 ))}

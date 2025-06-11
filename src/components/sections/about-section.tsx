@@ -72,11 +72,11 @@ export function AboutSection() {
             className="flex items-center justify-center"
           >
             <Image
-              src="/media/development-team.svg?height=550&width=550"
+              src="/images/development-team.jpg"
               width={550}
               height={550}
-              alt="Team Image"
-              className=" object-cover "
+              alt="CodeSpiceAI Development Team"
+              className="rounded-lg object-cover shadow-lg"
             />
           </motion.div>
         </div>

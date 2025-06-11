@@ -20,7 +20,7 @@
 
   "heroBanner.rating": "Được đánh giá 5 sao bởi hơn 100 khách hàng",
   "heroBanner.title": "Giải pháp phần mềm tùy chỉnh cho doanh nghiệp của bạn",
-  "heroBanner.description": "Chúng tôi xây dựng các ứng dụng web và di động hiện đại với công nghệ AI tiên tiến để giúp doanh nghiệp của bạn phát triển.",
+  "heroBanner.description": "Đội ngũ lập trình viên tài năng của chúng tôi sử dụng công nghệ AI tiên tiến và phương pháp phát triển hiện đại để tạo ra các giải pháp phần mềm chất lượng cao, giúp doanh nghiệp của bạn thành công trong kỷ nguyên số.",
   "heroBanner.primaryAction": "Bắt đầu dự án",
   "heroBanner.secondaryAction": "Xem demo",
   "heroBanner.clients": "Đã phục vụ hơn 100+ khách hàng",
@@ -183,11 +183,11 @@
   "portfolio.subtitle": "Các dự án tiêu biểu",
   "portfolio.description": "Khám phá một số dự án nổi bật mà chúng tôi đã thực hiện cho khách hàng.",
   "portfolio.project1": "Ứng dụng AI Chatbot",
-  "portfolio.project1Desc": "Xây dựng chatbot thông minh sử dụng công nghệ AI tiên tiến.",
+  "portfolio.project1Desc": "Xây dựng chatbot thông minh với giao diện đàm thoại trực quan, tích hợp AI để tự động phản hồi và hỗ trợ khách hàng 24/7.",
   "portfolio.project2": "Nền tảng E-commerce",
-  "portfolio.project2Desc": "Phát triển website thương mại điện tử với đầy đủ tính năng.",
+  "portfolio.project2Desc": "Phát triển nền tảng thương mại điện tử hoàn chỉnh với giao diện hiện đại, thanh toán an toàn và quản lý đơn hàng thông minh.",
   "portfolio.project3": "Ứng dụng Mobile",
-  "portfolio.project3Desc": "Ứng dụng di động đa nền tảng với giao diện người dùng hiện đại.",
+  "portfolio.project3Desc": "Ứng dụng di động đa nền tảng với UI/UX tinh tế, tích hợp các tính năng hiện đại và trải nghiệm người dùng mượt mà.",
   "portfolio.viewAll": "Xem tất cả dự án",
 
   "testimonials.title": "Đánh giá",

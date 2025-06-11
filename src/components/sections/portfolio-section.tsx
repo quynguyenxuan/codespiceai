@@ -1,34 +1,34 @@
-"use client"
+'use client'
 
-import Image from "next/image"
-import { Button } from "@/components/ui/button"
-import { ChevronRight } from "lucide-react"
-import { useLanguage } from "@/contexts/language-context"
-import { motion } from "framer-motion"
-import { fadeIn, staggerContainer, zoomIn } from "@/utils/animations"
-import Link from "next/link"
+import Image from 'next/image'
+import { Button } from '@/components/ui/button'
+import { ChevronRight } from 'lucide-react'
+import { useLanguage } from '@/contexts/language-context'
+import { motion } from 'framer-motion'
+import { fadeIn, staggerContainer, zoomIn } from '@/utils/animations'
+import Link from 'next/link'
 
 export function PortfolioSection() {
   const { t } = useLanguage()
 
   const projects = [
     {
-      id: "project1",
-      imageSrc: "/placeholder.svg?height=400&width=600",
-      title: t("portfolio.project1"),
-      description: t("portfolio.project1Desc"),
+      id: 'project1',
+      imageSrc: '/images/project-ai-chatbot.png',
+      title: t('portfolio.project1'),
+      description: t('portfolio.project1Desc'),
     },
     {
-      id: "project2",
-      imageSrc: "/placeholder.svg?height=400&width=600",
-      title: t("portfolio.project2"),
-      description: t("portfolio.project2Desc"),
+      id: 'project2',
+      imageSrc: '/images/project-ecommerce.jpg',
+      title: t('portfolio.project2'),
+      description: t('portfolio.project2Desc'),
     },
     {
-      id: "project3",
-      imageSrc: "/placeholder.svg?height=400&width=600",
-      title: t("portfolio.project3"),
-      description: t("portfolio.project3Desc"),
+      id: 'project3',
+      imageSrc: '/images/project-mobile-app.png',
+      title: t('portfolio.project3'),
+      description: t('portfolio.project3Desc'),
     },
   ]
 
@@ -48,18 +48,18 @@ export function PortfolioSection() {
         className="container px-4 md:px-6"
       >
         <motion.div
-          variants={fadeIn("up", 0.2)}
+          variants={fadeIn('up', 0.2)}
           className="flex flex-col items-center justify-center space-y-4 text-center"
         >
           <div className="space-y-2">
             <div className="inline-block rounded-lg bg-gradient-to-r from-primary-100 to-secondary-100 px-3 py-1 text-sm dark:from-primary-900 dark:to-secondary-900">
-              {t("portfolio.title")}
+              {t('portfolio.title')}
             </div>
             <h2 className="text-3xl font-bold tracking-tighter md:text-4xl/tight gold-silver-gradient">
-              {t("portfolio.subtitle")}
+              {t('portfolio.subtitle')}
             </h2>
             <p className="max-w-[900px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-gray-400">
-              {t("portfolio.description")}
+              {t('portfolio.description')}
             </p>
           </div>
         </motion.div>
@@ -75,11 +75,14 @@ export function PortfolioSection() {
             />
           ))}
         </div>
-        <motion.div variants={fadeIn("up", 0.7)} className="flex justify-center mt-8">
+        <motion.div variants={fadeIn('up', 0.7)} className="flex justify-center mt-8">
           <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
             <Link href="/projects">
-              <Button variant="outline" className="border-primary-500 text-primary-500 hover:bg-primary-50">
-                {t("portfolio.viewAll")}
+              <Button
+                variant="outline"
+                className="border-primary-500 text-primary-500 hover:bg-primary-50"
+              >
+                {t('portfolio.viewAll')}
                 <ChevronRight className="ml-2 h-4 w-4" />
               </Button>
             </Link>
@@ -106,7 +109,7 @@ function ProjectCard({ id, imageSrc, title, description, index }: ProjectCardPro
     >
       <div className="overflow-hidden">
         <Image
-          src={imageSrc || "/placeholder.svg"}
+          src={imageSrc || '/placeholder.svg'}
           width={600}
           height={400}
           alt={title}

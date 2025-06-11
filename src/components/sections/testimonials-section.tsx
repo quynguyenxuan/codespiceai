@@ -115,10 +115,10 @@ function TestimonialCard({ text, name, position, index }: TestimonialCardProps) 
       <div className="flex items-center space-x-4">
         <div className="relative h-10 w-10 overflow-hidden rounded-full bg-gradient-to-r from-primary-500 to-secondary-500 p-[2px]">
           <Image
-            src="/placeholder.svg?height=100&width=100"
+            src="/images/testimonial-avatar.jpg"
             width={40}
             height={40}
-            alt="Avatar"
+            alt="Client Avatar"
             className="rounded-full object-cover"
           />
         </div>

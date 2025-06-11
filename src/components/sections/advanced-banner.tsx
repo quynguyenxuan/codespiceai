@@ -40,11 +40,11 @@ export function AdvancedBanner() {
             <div className="hidden md:block mr-4">
               <div className="bg-white/20 p-2 rounded-full">
                 <Image
-                  src="/placeholder.svg?height=40&width=40"
+                  src="/images/offer-icon.png"
                   width={40}
                   height={40}
-                  alt="Offer icon"
-                  className="rounded-full"
+                  alt="Special Offer Icon"
+                  className="rounded-full object-cover"
                 />
               </div>
             </div>
