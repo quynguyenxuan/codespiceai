@@ -193,7 +193,7 @@ export const createOrUpdateByProps = async <T>(
     }
   }
   if (exist && id > 0) {
-    const updateData: any = updateProps?.length ? {} : data
+    const updateData: Partial<T> = updateProps?.length ? {} : data
     if (updateProps?.length) {
       for (const updateProp of updateProps) {
         if (data[updateProp] != null && data[updateProp] !== undefined) {
