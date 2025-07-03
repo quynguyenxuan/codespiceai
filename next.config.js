@@ -1,6 +1,6 @@
 import { withPayload } from '@payloadcms/next/withPayload'
 
-import redirects from './redirects.js'
+// import redirects from './redirects.js'
 const isDev = process.env.NODE_ENV === 'development'
 const NEXT_PUBLIC_SERVER_URL = process.env.VERCEL_PROJECT_PRODUCTION_URL
   ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
@@ -10,21 +10,22 @@ const NEXT_PUBLIC_SERVER_URL = process.env.VERCEL_PROJECT_PRODUCTION_URL
 const nextConfig = {
   images: {
     unoptimized: isDev,
-    remotePatterns: [
-      ...[NEXT_PUBLIC_SERVER_URL /* 'https://example.com' */].map((item) => {
-        const url = new URL(item)
+    // remotePatterns: [
+    //   ...[NEXT_PUBLIC_SERVER_URL /* 'https://example.com' */].map((item) => {
+    //     const url = new URL(item)
 
-        return {
-          hostname: url.hostname,
-          protocol: url.protocol.replace(':', ''),
-        }
-      }),
-    ],
+    //     return {
+    //       hostname: url.hostname,
+    //       protocol: url.protocol.replace(':', ''),
+    //     }
+    //   }),
+    // ],
   },
+  allowedDevOrigins: ['*'],
   crossOrigin: 'anonymous',
   reactStrictMode: true,
   output: 'standalone',
-  redirects,
+  // redirects,
   eslint: {
     ignoreDuringBuilds: true,
   },

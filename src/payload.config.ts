@@ -93,7 +93,8 @@ export default buildConfig({
     Contacts,
     Banners,
   ],
-  cors: [getServerSideURL()].filter(Boolean),
+  // cors: [getServerSideURL()].filter(Boolean),
+  cors: ['*'],
   globals: [Header, Footer],
   plugins: [
     ...plugins,
