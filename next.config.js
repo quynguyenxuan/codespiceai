@@ -21,6 +21,7 @@ const nextConfig = {
       }),
     ],
   },
+  crossOrigin: 'anonymous',
   reactStrictMode: true,
   output: 'standalone',
   redirects,
