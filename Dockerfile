@@ -32,7 +32,7 @@ ENV NEXT_TELEMETRY_DISABLED 1
 ENV NODE_OPTIONS --no-deprecation
 
 RUN \
-  if [ -f yarn.lock ]; then corepack enable pnpm && yarn run build; \
+  if [ -f yarn.lock ]; then corepack enable yarn && yarn run build; \
   elif [ -f package-lock.json ]; then npm run build; \
   elif [ -f pnpm-lock.yaml ]; then corepack enable pnpm && pnpm run build; \
   else echo "Lockfile not found." && exit 1; \
