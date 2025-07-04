@@ -17,7 +17,6 @@ services:
     restart: unless-stopped
   haproxy:
       image: haproxy:lts-alpine # LTS version, until 2026
-      container_name: haproxy
       restart: always
       sysctls:
           - net.ipv4.ip_unprivileged_port_start=0
