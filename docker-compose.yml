@@ -15,3 +15,20 @@ services:
     # command: ["yarn", "web", "start"]
     
     restart: unless-stopped
+  haproxy:
+      image: haproxy:lts-alpine # LTS version, until 2026
+      container_name: haproxy
+      restart: always
+      sysctls:
+          - net.ipv4.ip_unprivileged_port_start=0
+      ulimits:
+          nofile:
+              soft: 1000000
+              hard: 1000000
+      volumes:
+          - ./haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg
+          - /etc/localtime:/etc/localtime:ro
+      # ports:
+      #     - 443:443
+      #     - 80:80
+     

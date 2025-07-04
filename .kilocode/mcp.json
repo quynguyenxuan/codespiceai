@@ -2,16 +2,31 @@
   "mcpServers": {
     "memory": {
       "command": "docker",
-      "args": ["run", "-i", "-v", "claude-memory:/app/dist", "--rm", "mcp/memory"]
+      "args": [
+        "run",
+        "-i",
+        "-v",
+        "claude-memory:/app/dist",
+        "--rm",
+        "mcp/memory"
+      ]
     },
     "seaweedfs Docs": {
       "url": "https://gitmcp.io/seaweedfs/seaweedfs",
-      "alwaysAllow": ["fetch_seaweedfs_documentation", "search_seaweedfs_documentation"]
+      "alwaysAllow": [
+        "fetch_seaweedfs_documentation",
+        "search_seaweedfs_documentation"
+      ],
+      "disabled": true
     },
     "context7": {
       "type": "streamable-http",
       "url": "https://mcp.context7.com/mcp",
-      "alwaysAllow": ["get-library-docs", "resolve-library-id"]
+      "alwaysAllow": [
+        "get-library-docs",
+        "resolve-library-id"
+      ],
+      "disabled": true
     }
   }
 }
