@@ -103,11 +103,15 @@ export function Header() {
               transition={{ delay: 0.5 }}
             >
               <Link
-                href="/#testimonials"
-                className="text-base font-medium transition-colors hover:text-primary-500 relative group"
+                href="/reviews"
+                className={`text-base font-medium transition-colors hover:text-primary-500 relative group ${
+                  isActive('/reviews') ? 'text-primary-500' : ''
+                }`}
               >
                 {t('nav.testimonials')}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary-500 transition-all group-hover:w-full" />
+                <span
+                  className={`absolute -bottom-1 left-0 h-0.5 bg-primary-500 transition-all ${isActive('/reviews') ? 'w-full' : 'w-0 group-hover:w-full'}`}
+                />
               </Link>
             </motion.div>
             <motion.div

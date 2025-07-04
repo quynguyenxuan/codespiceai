@@ -5,26 +5,17 @@ import { useLanguage } from '@/contexts/language-context'
 import { motion } from 'framer-motion'
 import { fadeIn, staggerContainer } from '@/utils/animations'
 
-export function TestimonialsSection() {
-  const { t } = useLanguage()
+import { type Review } from '@/payload-types'
+import { Button } from '../ui/button'
+import Link from 'next/link'
 
-  const testimonials = [
-    {
-      text: t('testimonials.client1Text'),
-      name: t('testimonials.client1'),
-      position: t('testimonials.client1Position'),
-    },
-    {
-      text: t('testimonials.client2Text'),
-      name: t('testimonials.client2'),
-      position: t('testimonials.client2Position'),
-    },
-    {
-      text: t('testimonials.client3Text'),
-      name: t('testimonials.client3'),
-      position: t('testimonials.client3Position'),
-    },
-  ]
+interface TestimonialsSectionProps {
+  reviews: Review[]
+  isSummary?: boolean
+}
+
+export function TestimonialsSection({ reviews, isSummary = false }: TestimonialsSectionProps) {
+  const { t } = useLanguage()
 
   return (
     <section
@@ -58,16 +49,23 @@ export function TestimonialsSection() {
           </div>
         </motion.div>
         <div className="mx-auto grid max-w-5xl grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 mt-8">
-          {testimonials.map((testimonial, index) => (
+          {reviews.map((review, index) => (
             <TestimonialCard
-              key={index}
-              text={testimonial.text}
-              name={testimonial.name}
-              position={testimonial.position}
+              key={review.id}
+              text={review.content || ''}
+              name={review.username || 'Anonymous'}
+              position={review.jobTitle || ''}
               index={index}
             />
           ))}
         </div>
+        {isSummary && (
+          <motion.div variants={fadeIn('up', 0.3)} className="text-center mt-12">
+            <Button asChild size="lg">
+              <Link href="/reviews">Xem tất cả đánh giá</Link>
+            </Button>
+          </motion.div>
+        )}
       </motion.div>
     </section>
   )
@@ -110,7 +108,7 @@ function TestimonialCard({ text, name, position, index }: TestimonialCardProps) 
             </motion.svg>
           ))}
         </div>
-        <p className="text-gray-700 dark:text-gray-200 italic">"{text}"</p>
+        <p className="text-gray-700 dark:text-gray-200 italic">&ldquo;{text}&rdquo;</p>
       </div>
       <div className="flex items-center space-x-4">
         <div className="relative h-10 w-10 overflow-hidden rounded-full bg-gradient-to-r from-primary-500 to-secondary-500 p-[2px]">

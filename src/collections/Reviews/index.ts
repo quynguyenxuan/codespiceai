@@ -11,6 +11,13 @@ import {
 
 import { authenticated } from '../../access/authenticated'
 import { slugField } from '@/fields/slug'
+import {
+  MetaDescriptionField,
+  MetaImageField,
+  MetaTitleField,
+  OverviewField,
+  PreviewField,
+} from '@payloadcms/plugin-seo/fields'
 
 export const Reviews: CollectionConfig<'reviews'> = {
   slug: 'reviews',
@@ -20,10 +27,10 @@ export const Reviews: CollectionConfig<'reviews'> = {
     read: () => true,
     update: authenticated,
   },
-  
+
   admin: {
     defaultColumns: ['title', 'updatedAt'],
-    
+
     useAsTitle: 'title',
   },
   orderable: true,
@@ -42,15 +49,15 @@ export const Reviews: CollectionConfig<'reviews'> = {
       type: 'text',
     },
     {
-              name: 'avatar',
-              type: 'upload',
-              relationTo: 'media',
+      name: 'avatar',
+      type: 'upload',
+      relationTo: 'media',
     },
     {
       name: 'company',
       type: 'text',
     },
-   
+
     {
       name: 'content',
       type: 'text',
@@ -58,14 +65,42 @@ export const Reviews: CollectionConfig<'reviews'> = {
     {
       name: 'star',
       type: 'number',
-      required: true
+      required: true,
     },
 
+    ...slugField(),
+    {
+      type: 'tabs',
+      tabs: [
+        {
+          name: 'meta',
+          label: 'SEO',
+          fields: [
+            OverviewField({
+              titlePath: 'meta.title',
+              descriptionPath: 'meta.description',
+              imagePath: 'meta.image',
+            }),
+            MetaTitleField({
+              hasGenerateFn: true,
+            }),
+            MetaImageField({
+              relationTo: 'media',
+            }),
+            MetaDescriptionField({}),
+            PreviewField({
+              hasGenerateFn: true,
+              titlePath: 'meta.title',
+              descriptionPath: 'meta.description',
+            }),
+          ],
+        },
+      ],
+    },
   ],
   hooks: {
     // afterChange: [revalidatePost],
     // afterRead: [populateAuthors],
     // afterDelete: [revalidateDelete],
   },
-  
 }

@@ -209,11 +209,17 @@ export interface Page {
   };
   layout: (CallToActionBlock | ContentBlock | MediaBlock | ArchiveBlock | FormBlock)[];
   meta?: {
+    /**
+     * Tối ưu: 50-60 ký tự. Sử dụng component để đếm ký tự.
+     */
     title?: string | null;
     /**
      * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
      */
     image?: (number | null) | Media;
+    /**
+     * Tối ưu: 150-160 ký tự. Sử dụng component để đếm ký tự.
+     */
     description?: string | null;
   };
   publishedAt?: string | null;
@@ -255,6 +261,10 @@ export interface Post {
      */
     image?: (number | null) | Media;
     description?: string | null;
+    /**
+     * Để trống để sử dụng URL mặc định. Chỉ định một URL khác nếu trang này có nội dung trùng lặp.
+     */
+    canonicalURL?: string | null;
   };
   publishedAt?: string | null;
   authors?: (number | User)[] | null;
@@ -771,6 +781,16 @@ export interface Review {
   company?: string | null;
   content?: string | null;
   star: number;
+  slug?: string | null;
+  slugLock?: boolean | null;
+  meta?: {
+    title?: string | null;
+    /**
+     * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
+     */
+    image?: (number | null) | Media;
+    description?: string | null;
+  };
   updatedAt: string;
   createdAt: string;
 }
@@ -1359,6 +1379,7 @@ export interface PostsSelect<T extends boolean = true> {
         title?: T;
         image?: T;
         description?: T;
+        canonicalURL?: T;
       };
   publishedAt?: T;
   authors?: T;
@@ -1530,6 +1551,15 @@ export interface ReviewsSelect<T extends boolean = true> {
   company?: T;
   content?: T;
   star?: T;
+  slug?: T;
+  slugLock?: T;
+  meta?:
+    | T
+    | {
+        title?: T;
+        image?: T;
+        description?: T;
+      };
   updatedAt?: T;
   createdAt?: T;
 }

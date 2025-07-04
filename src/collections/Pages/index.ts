@@ -93,14 +93,25 @@ export const Pages: CollectionConfig<'pages'> = {
               descriptionPath: 'meta.description',
               imagePath: 'meta.image',
             }),
-            MetaTitleField({
-              hasGenerateFn: true,
-            }),
+            {
+              name: 'title',
+              label: 'Meta Title',
+              type: 'text',
+              admin: {
+                description: 'Tối ưu: 50-60 ký tự. Sử dụng component để đếm ký tự.',
+              },
+            },
             MetaImageField({
               relationTo: 'media',
             }),
-
-            MetaDescriptionField({}),
+            {
+              name: 'description',
+              label: 'Meta Description',
+              type: 'textarea',
+              admin: {
+                description: 'Tối ưu: 150-160 ký tự. Sử dụng component để đếm ký tự.',
+              },
+            },
             PreviewField({
               // if the `generateUrl` function is configured
               hasGenerateFn: true,

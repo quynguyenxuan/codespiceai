@@ -153,6 +153,15 @@ export const Posts: CollectionConfig<'posts'> = {
             }),
 
             MetaDescriptionField({}),
+            {
+              name: 'canonicalURL',
+              label: 'Canonical URL',
+              type: 'text',
+              admin: {
+                description:
+                  'Để trống để sử dụng URL mặc định. Chỉ định một URL khác nếu trang này có nội dung trùng lặp.',
+              },
+            },
             PreviewField({
               // if the `generateUrl` function is configured
               hasGenerateFn: true,

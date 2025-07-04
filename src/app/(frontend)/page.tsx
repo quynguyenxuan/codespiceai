@@ -5,6 +5,7 @@
 // export { generateMetadata }
 // "use client"
 
+import { Metadata } from 'next'
 import { Banner } from '@/payload-types' // Import the Banner type
 import { Header } from '@/components/layout/header'
 import { Footer } from '@/components/layout/footer'
@@ -17,6 +18,14 @@ import { ContactSection } from '@/components/sections/contact-section'
 import { AdvancedBanner } from '@/components/sections/advanced-banner'
 import { getPayloadRef } from '@/utilities/getPayload'
 
+export async function generateMetadata(): Promise<Metadata> {
+  return {
+    title: 'Thiết Kế Website Chuẩn SEO | Tăng Trưởng Doanh Thu',
+    description:
+      'Dịch vụ thiết kế website chuyên nghiệp giúp bạn thu hút khách hàng & tăng trưởng doanh thu. Giao diện đẹp, chuẩn SEO, tương thích mọi thiết bị. Bắt đầu dự án!',
+  }
+}
+
 export default async function Home() {
   const payload = await getPayloadRef()
   const banners = await payload.find({
@@ -27,6 +36,13 @@ export default async function Home() {
     collection: 'projects',
     limit: 3, // Adjust limit as needed
   })
+  const reviewsRes = await payload.find({
+    collection: 'reviews',
+    limit: 3, // Fetch 3 reviews for the summary
+    sort: '-createdAt',
+  })
+  const reviews = reviewsRes.docs
+
   return (
     <div className="flex flex-col min-h-screen">
       <Header />
@@ -54,7 +70,7 @@ export default async function Home() {
         <ServicesSection />
         <AboutSection />
         <PortfolioSection projects={projects.docs} />
-        <TestimonialsSection />
+        <TestimonialsSection reviews={reviews} isSummary={true} />
         <ContactSection />
       </main>
       <Footer />

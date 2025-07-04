@@ -52,9 +52,45 @@ export default async function RootLayout({ children }: { children: React.ReactNo
 
 export const metadata: Metadata = {
   metadataBase: new URL(getServerSideURL()),
-  openGraph: mergeOpenGraph(),
+  title: {
+    default: 'CodeSpice AI | Giải Pháp Công Nghệ & Phần Mềm Sáng Tạo', // Replace with your company name and tagline
+    template: '%s | CodeSpice AI',
+  },
+  description:
+    'CodeSpice AI chuyên cung cấp dịch vụ thiết kế website, phát triển ứng dụng di động và giải pháp AI đột phá. Đối tác công nghệ tin cậy cho sự phát triển của bạn.', // Replace with your default description
+  keywords: [
+    'CodeSpice AI',
+    'thiết kế website',
+    'phát triển phần mềm',
+    'giải pháp AI',
+    'công ty công nghệ',
+  ],
+  robots: {
+    index: true,
+    follow: true,
+  },
+  openGraph: mergeOpenGraph({
+    title: 'CodeSpice AI | Giải Pháp Công Nghệ & Phần Mềm Sáng Tạo',
+    description: 'Đối tác công nghệ tin cậy cho sự phát triển của bạn.',
+    url: '/',
+    siteName: 'CodeSpice AI',
+    images: [
+      {
+        url: '/images/og-image.jpg', // Replace with your default OG image path
+        width: 1200,
+        height: 630,
+        alt: 'CodeSpice AI - Giải Pháp Công Nghệ',
+      },
+    ],
+    locale: 'vi_VN',
+    type: 'website',
+  }),
   twitter: {
     card: 'summary_large_image',
-    creator: '@payloadcms',
+    site: '@CodeSpiceAI', // Replace with your Twitter handle
+    creator: '@CodeSpiceAI',
+    title: 'CodeSpice AI | Giải Pháp Công Nghệ & Phần Mềm Sáng Tạo',
+    description: 'Đối tác công nghệ tin cậy cho sự phát triển của bạn.',
+    images: ['/images/og-image.jpg'], // Replace with your default Twitter image path
   },
 }
