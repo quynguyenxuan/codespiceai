@@ -25,6 +25,7 @@ const nextConfig = {
   crossOrigin: 'anonymous',
   reactStrictMode: true,
   output: 'standalone',
+  compress: true,
   // redirects,
   eslint: {
     ignoreDuringBuilds: true,
