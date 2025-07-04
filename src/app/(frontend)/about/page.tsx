@@ -1,14 +1,10 @@
 import { Metadata } from 'next'
 import AboutPageClient from './page.client'
 import { Users, Target, Eye, Award, Briefcase, Globe, Heart } from 'lucide-react'
+import { getMetadata } from '@/utilities/getMetadata'
 
 export async function generateMetadata(): Promise<Metadata> {
-  // Replace 'CodeSpice AI' with your actual company name
-  const companyName = 'CodeSpice AI'
-  return {
-    title: `Về ${companyName} | Câu Chuyện & Đội Ngũ Chuyên Gia`,
-    description: `Tìm hiểu về câu chuyện, sứ mệnh và đội ngũ chuyên gia tại ${companyName}. Chúng tôi cam kết mang đến các giải pháp công nghệ đột phá và hiệu quả.`,
-  }
+  return await getMetadata({ slug: 'about' })
 }
 
 export default function AboutPage() {

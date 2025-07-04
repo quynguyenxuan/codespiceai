@@ -7,14 +7,10 @@ import Image from 'next/image'
 import { getPayloadRef } from '@/utilities/getPayload'
 import { ProjectHeroSection } from '@/components/Project/ProjectHeroTitle'
 import { ProjectList } from '@/components/Project/ProjectList'
-import ProjectFilters from '@/components/Project/ProjectFilters'
+import { getMetadata } from '@/utilities/getMetadata'
 
 export async function generateMetadata(): Promise<Metadata> {
-  return {
-    title: 'Portfolio Thiết Kế Web | Nguồn Cảm Hứng Cho Dự Án Của Bạn',
-    description:
-      'Tìm kiếm ý tưởng cho website mới? Xem ngay các dự án thiết kế web đa dạng ngành nghề của chúng tôi để tìm nguồn cảm hứng và liên hệ nhận tư vấn miễn phí.',
-  }
+  return await getMetadata({ slug: 'projects' })
 }
 
 export default async function ProjectsPage() {

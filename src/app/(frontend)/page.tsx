@@ -1,12 +1,4 @@
-// import PageTemplate, { generateMetadata } from './[slug]/page'
-
-// export default PageTemplate
-
-// export { generateMetadata }
-// "use client"
-
 import { Metadata } from 'next'
-import { Banner } from '@/payload-types' // Import the Banner type
 import { Header } from '@/components/layout/header'
 import { Footer } from '@/components/layout/footer'
 import { HeroBanner } from '@/components/sections/hero-banner'
@@ -17,13 +9,10 @@ import { TestimonialsSection } from '@/components/sections/testimonials-section'
 import { ContactSection } from '@/components/sections/contact-section'
 import { AdvancedBanner } from '@/components/sections/advanced-banner'
 import { getPayloadRef } from '@/utilities/getPayload'
+import { getMetadata } from '@/utilities/getMetadata'
 
 export async function generateMetadata(): Promise<Metadata> {
-  return {
-    title: 'Thiết Kế Website Chuẩn SEO | Tăng Trưởng Doanh Thu',
-    description:
-      'Dịch vụ thiết kế website chuyên nghiệp giúp bạn thu hút khách hàng & tăng trưởng doanh thu. Giao diện đẹp, chuẩn SEO, tương thích mọi thiết bị. Bắt đầu dự án!',
-  }
+  return await getMetadata({ slug: 'home' })
 }
 
 export default async function Home() {

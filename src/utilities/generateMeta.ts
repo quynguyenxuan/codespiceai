@@ -71,10 +71,10 @@ export const generateMeta = async (args: {
   const ogImage = getImageURL(doc?.meta?.image)
 
   const title = doc?.meta?.title
-    ? doc.meta.title + ' | Payload Website Template'
+    ? doc.meta.title + ' | CodeSpice AI'
     : doc?.title
-      ? doc.title + ' | Payload Website Template'
-      : 'Payload Website Template'
+      ? doc.title + ' | CodeSpice AI'
+      : 'CodeSpice AI'
 
   const description = extractDescription(doc)
 

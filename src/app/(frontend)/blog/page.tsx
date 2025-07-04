@@ -13,11 +13,10 @@ import {
 import { Badge } from '@/components/ui/badge'
 import { Header } from '@/components/layout/header' // Import the Header component
 import { Footer } from '@/components/layout/footer' // Import the Footer component
+import { getMetadata } from '@/utilities/getMetadata'
 
-export const metadata: Metadata = {
-  title: 'Blog Công Nghệ Thông Tin | Kiến Thức Từ Chuyên Gia',
-  description:
-    'Khám phá các bài viết chuyên sâu về lập trình, AI, DevOps từ các chuyên gia. Cập nhật kiến thức và giải pháp công nghệ mới nhất tại blog của chúng tôi.',
+export async function generateMetadata(): Promise<Metadata> {
+  return await getMetadata({ slug: 'blog' })
 }
 
 const categories = [

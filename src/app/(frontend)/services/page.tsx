@@ -14,13 +14,10 @@ import {
   Bug,
   HelpCircle,
 } from 'lucide-react'
+import { getMetadata } from '@/utilities/getMetadata'
 
 export async function generateMetadata(): Promise<Metadata> {
-  return {
-    title: 'Dịch Vụ Phát Triển Phần Mềm & Giải Pháp Công Nghệ',
-    description:
-      'Cung cấp dịch vụ phát triển phần mềm toàn diện: Web, App Mobile, AI, Backend & QA. Biến ý tưởng của bạn thành sản phẩm công nghệ vượt trội. Liên hệ ngay!',
-  }
+  return await getMetadata({ slug: 'services' })
 }
 
 export default function ServicesPage() {

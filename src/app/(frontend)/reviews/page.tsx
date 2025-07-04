@@ -5,18 +5,10 @@ import { Footer } from '@/components/layout/footer'
 import Image from 'next/image'
 import { Star } from 'lucide-react'
 import { type Review } from '@/payload-types'
+import { getMetadata } from '@/utilities/getMetadata'
 
 export async function generateMetadata(): Promise<Metadata> {
-  const companyName = 'CodeSpice AI' // Replace with your actual company name
-  return {
-    title: `Khách Hàng Nói Gì Về ${companyName} | Đánh Giá & Cảm Nhận`,
-    description: `Xem các đánh giá và cảm nhận thực tế từ những khách hàng đã tin tưởng và sử dụng dịch vụ của ${companyName}. Sự hài lòng của bạn là ưu tiên hàng đầu của chúng tôi.`,
-    openGraph: {
-      title: `Đánh Giá Khách Hàng - ${companyName}`,
-      description: 'Niềm tin và sự hài lòng của bạn là thước đo thành công của chúng tôi.',
-      images: [{ url: '/images/og-reviews.jpg' }], // Create a specific OG image for this page
-    },
-  }
+  return await getMetadata({ slug: 'reviews' })
 }
 
 const StarRating = ({ rating }: { rating: number }) => {

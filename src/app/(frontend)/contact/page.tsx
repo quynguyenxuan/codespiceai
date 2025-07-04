@@ -1,13 +1,10 @@
 import { Metadata } from 'next'
 import ContactPageClient from './page.client'
 import { Phone, Mail, MapPin, Clock, Facebook, Twitter, Instagram, Linkedin } from 'lucide-react'
+import { getMetadata } from '@/utilities/getMetadata'
 
 export async function generateMetadata(): Promise<Metadata> {
-  const companyName = 'CodeSpice AI' // Replace with your actual company name
-  return {
-    title: `Liên Hệ ${companyName} - Nhận Báo Giá & Tư Vấn Miễn Phí`,
-    description: `Sẵn sàng bắt đầu dự án của bạn? Liên hệ với chúng tôi qua form, email, hoặc điện thoại để nhận báo giá và tư vấn giải pháp công nghệ miễn phí.`,
-  }
+  return await getMetadata({ slug: 'contact' })
 }
 
 export default function ContactPage() {
