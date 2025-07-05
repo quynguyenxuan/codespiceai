@@ -13,7 +13,12 @@ import { generateMeta } from '@/utilities/generateMeta'
 import PageClient from './page.client'
 import { LivePreviewListener } from '@/components/LivePreviewListener'
 import { queryPageBySlug } from '@/utils/queryPageBySlug'
-import { Args } from '@/types/MetadataProps'
+
+type Args = {
+  params: Promise<{
+    slug: string
+  }>
+}
 
 export async function generateStaticParams() {
   const payload = await getPayload({ config: configPromise })
