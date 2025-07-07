@@ -218,6 +218,15 @@ export const Services: CollectionConfig<'services'> = {
         },
       ],
     },
+    {
+      name: 'categories',
+      type: 'relationship',
+      admin: {
+        position: 'sidebar',
+      },
+      hasMany: true,
+      relationTo: 'categories',
+    },
     ...slugField(),
   ],
   hooks: {
@@ -225,5 +234,4 @@ export const Services: CollectionConfig<'services'> = {
     // afterRead: [populateAuthors],
     // afterDelete: [revalidateDelete],
   },
-  
 }
