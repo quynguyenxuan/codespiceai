@@ -218,15 +218,6 @@ export const Services: CollectionConfig<'services'> = {
         },
       ],
     },
-    {
-      name: 'categories',
-      type: 'relationship',
-      admin: {
-        position: 'sidebar',
-      },
-      hasMany: true,
-      relationTo: 'categories',
-    },
     ...slugField(),
   ],
   hooks: {

@@ -81,12 +81,6 @@ export const Projects: CollectionConfig<'projects'> = {
       localized: true,
     },
     {
-      name: 'category',
-      type: 'relationship',
-      relationTo: 'categories',
-      hasMany: true,
-    },
-    {
       name: 'date',
       type: 'date',
     },
@@ -178,15 +172,6 @@ export const Projects: CollectionConfig<'projects'> = {
           ],
         },
       ],
-    },
-    {
-      name: 'categories',
-      type: 'relationship',
-      admin: {
-        position: 'sidebar',
-      },
-      hasMany: true,
-      relationTo: 'categories',
     },
 
     ...slugField(),

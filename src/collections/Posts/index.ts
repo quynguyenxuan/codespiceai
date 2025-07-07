@@ -228,15 +228,6 @@ export const Posts: CollectionConfig<'posts'> = {
         },
       ],
     },
-    {
-      name: 'categories',
-      type: 'relationship',
-      admin: {
-        position: 'sidebar',
-      },
-      hasMany: true,
-      relationTo: 'categories',
-    },
     ...slugField(),
   ],
   hooks: {
