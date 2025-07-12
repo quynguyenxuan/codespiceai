@@ -80,6 +80,7 @@ export interface Config {
     sevices: Sevice;
     contacts: Contact;
     banners: Banner;
+    'address-mappings': AddressMapping;
     redirects: Redirect;
     forms: Form;
     'form-submissions': FormSubmission;
@@ -104,6 +105,7 @@ export interface Config {
     sevices: SevicesSelect<false> | SevicesSelect<true>;
     contacts: ContactsSelect<false> | ContactsSelect<true>;
     banners: BannersSelect<false> | BannersSelect<true>;
+    'address-mappings': AddressMappingsSelect<false> | AddressMappingsSelect<true>;
     redirects: RedirectsSelect<false> | RedirectsSelect<true>;
     forms: FormsSelect<false> | FormsSelect<true>;
     'form-submissions': FormSubmissionsSelect<false> | FormSubmissionsSelect<true>;
@@ -927,6 +929,38 @@ export interface Banner {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "address-mappings".
+ */
+export interface AddressMapping {
+  id: number;
+  oldProvince?: string | null;
+  oldDistrict?: string | null;
+  oldWard?: string | null;
+  newProvince?: string | null;
+  newDistrict?: string | null;
+  newWard?: string | null;
+  oldProvinceDescription?: string | null;
+  oldDistrictDescription?: string | null;
+  oldWardDescription?: string | null;
+  newProvinceDescription?: string | null;
+  newDistrictDescription?: string | null;
+  newWardDescription?: string | null;
+  oldPopulation?: string | null;
+  newPopulation?: string | null;
+  oldAreaKm2?: string | null;
+  newAreaKm2?: string | null;
+  oldAdminCenter?: string | null;
+  newAdminCenter?: string | null;
+  oldLongitude?: string | null;
+  newLongitude?: string | null;
+  oldLatitude?: string | null;
+  newLatitude?: string | null;
+  note?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "redirects".
  */
 export interface Redirect {
@@ -1149,6 +1183,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'banners';
         value: number | Banner;
+      } | null)
+    | ({
+        relationTo: 'address-mappings';
+        value: number | AddressMapping;
       } | null)
     | ({
         relationTo: 'redirects';
@@ -1635,6 +1673,37 @@ export interface BannersSelect<T extends boolean = true> {
   title?: T;
   description?: T;
   image?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "address-mappings_select".
+ */
+export interface AddressMappingsSelect<T extends boolean = true> {
+  oldProvince?: T;
+  oldDistrict?: T;
+  oldWard?: T;
+  newProvince?: T;
+  newDistrict?: T;
+  newWard?: T;
+  oldProvinceDescription?: T;
+  oldDistrictDescription?: T;
+  oldWardDescription?: T;
+  newProvinceDescription?: T;
+  newDistrictDescription?: T;
+  newWardDescription?: T;
+  oldPopulation?: T;
+  newPopulation?: T;
+  oldAreaKm2?: T;
+  newAreaKm2?: T;
+  oldAdminCenter?: T;
+  newAdminCenter?: T;
+  oldLongitude?: T;
+  newLongitude?: T;
+  oldLatitude?: T;
+  newLatitude?: T;
+  note?: T;
   updatedAt?: T;
   createdAt?: T;
 }

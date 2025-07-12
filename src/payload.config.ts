@@ -25,6 +25,7 @@ import { Contacts } from './collections/Contacts'
 import { Banners } from './collections/Banners'
 import { UserRoles } from './collections/UserRoles/index'
 import { seed } from './seed'
+import { AddressMappings } from './collections/AddressMappings'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -92,6 +93,7 @@ export default buildConfig({
     Services,
     Contacts,
     Banners,
+    AddressMappings,
   ],
   // cors: [getServerSideURL()].filter(Boolean),
   cors: ['*'],

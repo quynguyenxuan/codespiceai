@@ -26,7 +26,7 @@ export function Header() {
       className="sticky top-0 z-40 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60"
     >
       <div className="container flex h-16 items-center space-x-4 sm:justify-between sm:space-x-0">
-        <div className="flex gap-6 md:gap-10">
+        <div className="flex items-center gap-6 md:gap-10">
           <Logo size="md" />
           <nav className="hidden md:flex gap-6">
             <motion.div
@@ -146,6 +146,25 @@ export function Header() {
                 <span
                   className={`absolute -bottom-1 left-0 h-0.5 bg-primary-500 transition-all ${
                     isActive('/blog') ? 'w-full' : 'w-0 group-hover:w-full'
+                  }`}
+                />
+              </Link>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.7 }}
+            >
+              <Link
+                href="/convert-addresses"
+                className={`text-base font-medium transition-colors hover:text-primary-500 relative group ${
+                  isActive('/convert-addresses') ? 'text-primary-500' : ''
+                }`}
+              >
+                {t('nav.convertAddresses')}
+                <span
+                  className={`absolute -bottom-1 left-0 h-0.5 bg-primary-500 transition-all ${
+                    isActive('/convert-addresses') ? 'w-full' : 'w-0 group-hover:w-full'
                   }`}
                 />
               </Link>
