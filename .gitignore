@@ -17,3 +17,7 @@ public/sitemap*.xml
 
 # env
 .env
+.env.production
+.env.development
+.env.local
+
