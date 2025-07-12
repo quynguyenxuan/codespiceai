@@ -132,15 +132,6 @@ export const Projects: CollectionConfig<'projects'> = {
               hasMany: true,
               relationTo: 'projects',
             },
-            {
-              name: 'categories',
-              type: 'relationship',
-              admin: {
-                position: 'sidebar',
-              },
-              hasMany: true,
-              relationTo: 'categories',
-            },
           ],
           label: 'Meta',
         },
@@ -173,7 +164,15 @@ export const Projects: CollectionConfig<'projects'> = {
         },
       ],
     },
-
+    {
+      name: 'categories',
+      type: 'relationship',
+      admin: {
+        position: 'sidebar',
+      },
+      hasMany: true,
+      relationTo: 'categories',
+    },
     ...slugField(),
   ],
   hooks: {

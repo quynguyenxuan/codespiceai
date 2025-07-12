@@ -107,7 +107,7 @@ export default buildConfig({
   },
   onInit: async (payload) => {
     // if (process.env.SEED_DB) {
-    seed(payload)
+    // seed(payload)
     // }
   },
   jobs: {

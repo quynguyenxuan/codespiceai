@@ -21,8 +21,9 @@
   "dependencies": {
     "@emotion/is-prop-valid": "latest",
     "@hookform/resolvers": "^3.9.1",
+    "@next/third-parties": "^15.3.5",
     "@payloadcms/admin-bar": "3.39.1",
-    "@payloadcms/db-postgres": "^3.39.1",
+    "@payloadcms/db-postgres": "3.39.1",
     "@payloadcms/live-preview-react": "3.39.1",
     "@payloadcms/next": "3.39.1",
     "@payloadcms/payload-cloud": "3.39.1",

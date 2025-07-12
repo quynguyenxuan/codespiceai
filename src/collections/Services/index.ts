@@ -124,15 +124,6 @@ export const Services: CollectionConfig<'services'> = {
             //   hasMany: true,
             //   relationTo: 'services',
             // },
-            {
-              name: 'categories',
-              type: 'relationship',
-              admin: {
-                position: 'sidebar',
-              },
-              hasMany: true,
-              relationTo: 'categories',
-            },
           ],
           label: 'Meta',
         },
@@ -164,6 +155,15 @@ export const Services: CollectionConfig<'services'> = {
           ],
         },
       ],
+    },
+    {
+      name: 'categories',
+      type: 'relationship',
+      admin: {
+        position: 'sidebar',
+      },
+      hasMany: true,
+      relationTo: 'categories',
     },
     {
       name: 'publishedAt',

@@ -29,6 +29,11 @@ export const Media: CollectionConfig = {
       //required: true,
     },
     {
+      name: 'prefix',
+      type: 'text',
+      //required: true,
+    },
+    {
       name: 'caption',
       type: 'richText',
       editor: lexicalEditor({
@@ -49,11 +54,6 @@ export const Media: CollectionConfig = {
         width: 300,
       },
       {
-        name: 'square',
-        width: 500,
-        height: 500,
-      },
-      {
         name: 'small',
         width: 600,
       },
@@ -64,10 +64,6 @@ export const Media: CollectionConfig = {
       {
         name: 'large',
         width: 1400,
-      },
-      {
-        name: 'xlarge',
-        width: 1920,
       },
       {
         name: 'og',

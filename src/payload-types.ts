@@ -253,7 +253,6 @@ export interface Post {
     [k: string]: unknown;
   };
   relatedPosts?: (number | Post)[] | null;
-  categories?: (number | Category)[] | null;
   meta?: {
     title?: string | null;
     /**
@@ -266,6 +265,7 @@ export interface Post {
      */
     canonicalURL?: string | null;
   };
+  categories?: (number | Category)[] | null;
   publishedAt?: string | null;
   authors?: (number | User)[] | null;
   populatedAuthors?:
@@ -287,6 +287,7 @@ export interface Post {
 export interface Media {
   id: number;
   alt?: string | null;
+  prefix?: string | null;
   caption?: {
     root: {
       type: string;
@@ -322,14 +323,6 @@ export interface Media {
       filesize?: number | null;
       filename?: string | null;
     };
-    square?: {
-      url?: string | null;
-      width?: number | null;
-      height?: number | null;
-      mimeType?: string | null;
-      filesize?: number | null;
-      filename?: string | null;
-    };
     small?: {
       url?: string | null;
       width?: number | null;
@@ -347,14 +340,6 @@ export interface Media {
       filename?: string | null;
     };
     large?: {
-      url?: string | null;
-      width?: number | null;
-      height?: number | null;
-      mimeType?: string | null;
-      filesize?: number | null;
-      filename?: string | null;
-    };
-    xlarge?: {
       url?: string | null;
       width?: number | null;
       height?: number | null;
@@ -833,7 +818,6 @@ export interface Project {
   fullDescription?: string | null;
   image?: (number | null) | Media;
   client?: string | null;
-  category?: (number | Category)[] | null;
   date?: string | null;
   heroImage?: (number | null) | Media;
   content?: {
@@ -852,7 +836,6 @@ export interface Project {
     [k: string]: unknown;
   } | null;
   relatedProjects?: (number | Project)[] | null;
-  categories?: (number | Category)[] | null;
   meta?: {
     title?: string | null;
     /**
@@ -861,6 +844,7 @@ export interface Project {
     image?: (number | null) | Media;
     description?: string | null;
   };
+  categories?: (number | Category)[] | null;
   slug?: string | null;
   slugLock?: boolean | null;
   updatedAt: string;
@@ -889,7 +873,6 @@ export interface Sevice {
     };
     [k: string]: unknown;
   };
-  categories?: (number | Category)[] | null;
   meta?: {
     title?: string | null;
     /**
@@ -898,6 +881,7 @@ export interface Sevice {
     image?: (number | null) | Media;
     description?: string | null;
   };
+  categories?: (number | Category)[] | null;
   publishedAt?: string | null;
   authors?: (number | User)[] | null;
   populatedAuthors?:
@@ -1372,7 +1356,6 @@ export interface PostsSelect<T extends boolean = true> {
   heroImage?: T;
   content?: T;
   relatedPosts?: T;
-  categories?: T;
   meta?:
     | T
     | {
@@ -1381,6 +1364,7 @@ export interface PostsSelect<T extends boolean = true> {
         description?: T;
         canonicalURL?: T;
       };
+  categories?: T;
   publishedAt?: T;
   authors?: T;
   populatedAuthors?:
@@ -1401,6 +1385,7 @@ export interface PostsSelect<T extends boolean = true> {
  */
 export interface MediaSelect<T extends boolean = true> {
   alt?: T;
+  prefix?: T;
   caption?: T;
   updatedAt?: T;
   createdAt?: T;
@@ -1417,16 +1402,6 @@ export interface MediaSelect<T extends boolean = true> {
     | T
     | {
         thumbnail?:
-          | T
-          | {
-              url?: T;
-              width?: T;
-              height?: T;
-              mimeType?: T;
-              filesize?: T;
-              filename?: T;
-            };
-        square?:
           | T
           | {
               url?: T;
@@ -1457,16 +1432,6 @@ export interface MediaSelect<T extends boolean = true> {
               filename?: T;
             };
         large?:
-          | T
-          | {
-              url?: T;
-              width?: T;
-              height?: T;
-              mimeType?: T;
-              filesize?: T;
-              filename?: T;
-            };
-        xlarge?:
           | T
           | {
               url?: T;
@@ -1599,12 +1564,10 @@ export interface ProjectsSelect<T extends boolean = true> {
   fullDescription?: T;
   image?: T;
   client?: T;
-  category?: T;
   date?: T;
   heroImage?: T;
   content?: T;
   relatedProjects?: T;
-  categories?: T;
   meta?:
     | T
     | {
@@ -1612,6 +1575,7 @@ export interface ProjectsSelect<T extends boolean = true> {
         image?: T;
         description?: T;
       };
+  categories?: T;
   slug?: T;
   slugLock?: T;
   updatedAt?: T;
@@ -1625,7 +1589,6 @@ export interface SevicesSelect<T extends boolean = true> {
   title?: T;
   heroImage?: T;
   content?: T;
-  categories?: T;
   meta?:
     | T
     | {
@@ -1633,6 +1596,7 @@ export interface SevicesSelect<T extends boolean = true> {
         image?: T;
         description?: T;
       };
+  categories?: T;
   publishedAt?: T;
   authors?: T;
   populatedAuthors?:
