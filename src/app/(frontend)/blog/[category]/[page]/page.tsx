@@ -73,8 +73,8 @@ export default async function BlogPage({
     page: string
   }
 }) {
-  const { category: categorySlug, page } = params
-  const { limit = 3, query } = searchParams // Default limit
+  const { category: categorySlug, page } = await params
+  const { limit = 3, query } = await searchParams // Default limit
   const { posts, categories: payloadCategories } = await getPostsAndCategories(+page, +limit, query)
 
   const allCategories = [
