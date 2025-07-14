@@ -64,6 +64,449 @@ export const seed: NonNullable<Config['onInit']> = async (payload): Promise<void
       },
       ['email'],
     )
+
+    const categories = [
+      {
+        title: 'Web Development',
+        slug: 'web-development',
+      },
+      {
+        title: 'Mobile',
+        slug: 'mobile',
+      },
+      {
+        title: 'DevOps',
+        slug: 'devops',
+      },
+      {
+        title: 'AI & ML',
+        slug: 'ai-ml',
+      },
+      {
+        title: 'Design',
+        slug: 'design',
+      },
+    ]
+
+    const createdCategories = []
+    for (const category of categories) {
+      const createdCategory = await createOrUpdateByProps(
+        payload,
+        {
+          collection: 'categories',
+          data: category,
+        },
+        ['slug'],
+      )
+      createdCategories.push(createdCategory)
+    }
+
+    const adminUser = await createOrUpdateByProps(
+      payload,
+      {
+        collection: 'users',
+        data: {
+          email: 'admin@gmail.com',
+          password: 'admin',
+          roles: [],
+        },
+      },
+      ['email'],
+    )
+
+    const mediaItems = [
+      {
+        filename: 'nextjs-cover.jpg',
+        alt: 'Next.js Cover',
+      },
+      {
+        filename: 'tailwind-cover.jpg',
+        alt: 'Tailwind CSS Cover',
+      },
+      {
+        filename: 'accessibility-cover.jpg',
+        alt: 'Accessibility Cover',
+      },
+      {
+        filename: 'state-management-cover.jpg',
+        alt: 'State Management Cover',
+      },
+      {
+        filename: 'mobile-frameworks-cover.jpg',
+        alt: 'Mobile Frameworks Cover',
+      },
+      {
+        filename: 'devops-cover.jpg',
+        alt: 'DevOps Cover',
+      },
+      {
+        filename: 'ml-js-cover.jpg',
+        alt: 'ML JS Cover',
+      },
+      {
+        filename: 'design-trends-cover.jpg',
+        alt: 'Design Trends Cover',
+      },
+      {
+        filename: 'github-actions-cover.jpg',
+        alt: 'GitHub Actions Cover',
+      },
+      {
+        filename: 'react-performance-cover.jpg',
+        alt: 'React Performance Cover',
+      },
+      {
+        filename: 'llm-cover.jpg',
+        alt: 'LLM Cover',
+      },
+      {
+        filename: 'css-grid-cover.jpg',
+        alt: 'CSS Grid Cover',
+      },
+    ]
+
+    const createdMedia = []
+    for (const mediaItem of mediaItems) {
+      const existingMedia = await payload.find({
+        collection: 'media',
+        where: {
+          filename: {
+            equals: mediaItem.filename,
+          },
+        },
+      })
+
+      if (existingMedia.docs.length > 0) {
+        createdMedia.push(existingMedia.docs[0])
+      } else {
+        // NOTE: This will only work if the images are already in public/images
+        // In a real scenario, you'd upload them or use a mock
+        const newMedia = await payload.create({
+          collection: 'media',
+          data: {
+            alt: mediaItem.alt,
+            filename: mediaItem.filename,
+            url: `/images/blog/${mediaItem.filename}`, // Assuming images are in public/images/blog
+          },
+        })
+        createdMedia.push(newMedia)
+      }
+    }
+
+    const posts = [
+      {
+        title: 'Getting Started with Next.js 14',
+        slug: 'getting-started-with-nextjs-14',
+        heroImage: createdMedia.find((m) => m.filename === 'nextjs-cover.jpg')?.id,
+        content: {
+          root: {
+            type: 'root',
+            children: [
+              {
+                type: 'paragraph',
+                children: [
+                  {
+                    type: 'text',
+                    text: "Learn how to build modern web applications with Next.js 14. We'll cover the new App Router, Server Components, and more.",
+                  },
+                ],
+              },
+            ],
+          },
+        },
+        categories: [createdCategories.find((c) => c.slug === 'web-development')?.id],
+        publishedAt: new Date('2025-05-20T00:00:00Z').toISOString(),
+        authors: [adminUser.id],
+        _status: 'published',
+      },
+      {
+        title: 'The Power of Tailwind CSS',
+        slug: 'power-of-tailwind-css',
+        heroImage: createdMedia.find((m) => m.filename === 'tailwind-cover.jpg')?.id,
+        content: {
+          root: {
+            type: 'root',
+            children: [
+              {
+                type: 'paragraph',
+                children: [
+                  {
+                    type: 'text',
+                    text: 'Discover how Tailwind CSS can streamline your styling workflow and help you build beautiful, responsive interfaces faster than ever.',
+                  },
+                ],
+              },
+            ],
+          },
+        },
+        categories: [createdCategories.find((c) => c.slug === 'web-development')?.id],
+        publishedAt: new Date('2025-05-15T00:00:00Z').toISOString(),
+        authors: [adminUser.id],
+        _status: 'published',
+      },
+      {
+        title: 'Building Accessible UI Components',
+        slug: 'building-accessible-ui-components',
+        heroImage: createdMedia.find((m) => m.filename === 'accessibility-cover.jpg')?.id,
+        content: {
+          root: {
+            type: 'root',
+            children: [
+              {
+                type: 'paragraph',
+                children: [
+                  {
+                    type: 'text',
+                    text: 'Best practices for creating accessible and inclusive user interfaces that work for everyone, regardless of ability or disability.',
+                  },
+                ],
+              },
+            ],
+          },
+        },
+        categories: [createdCategories.find((c) => c.slug === 'design')?.id],
+        publishedAt: new Date('2025-05-10T00:00:00Z').toISOString(),
+        authors: [adminUser.id],
+        _status: 'published',
+      },
+      {
+        title: 'State Management in React Applications',
+        slug: 'state-management-react-applications',
+        heroImage: createdMedia.find((m) => m.filename === 'state-management-cover.jpg')?.id,
+        content: {
+          root: {
+            type: 'root',
+            children: [
+              {
+                type: 'paragraph',
+                children: [
+                  {
+                    type: 'text',
+                    text: 'Comparing different state management solutions for React apps including Context API, Redux, Zustand, and Jotai. Which one is right for your project?',
+                  },
+                ],
+              },
+            ],
+          },
+        },
+        categories: [createdCategories.find((c) => c.slug === 'web-development')?.id],
+        publishedAt: new Date('2025-05-05T00:00:00Z').toISOString(),
+        authors: [adminUser.id],
+        _status: 'published',
+      },
+      {
+        title: 'Flutter vs React Native in 2025',
+        slug: 'flutter-vs-react-native-2025',
+        heroImage: createdMedia.find((m) => m.filename === 'mobile-frameworks-cover.jpg')?.id,
+        content: {
+          root: {
+            type: 'root',
+            children: [
+              {
+                type: 'paragraph',
+                children: [
+                  {
+                    type: 'text',
+                    text: 'A comprehensive comparison of the two most popular cross-platform mobile development frameworks in 2025. Which one should you choose?',
+                  },
+                ],
+              },
+            ],
+          },
+        },
+        categories: [createdCategories.find((c) => c.slug === 'mobile')?.id],
+        publishedAt: new Date('2025-04-28T00:00:00Z').toISOString(),
+        authors: [adminUser.id],
+        _status: 'published',
+      },
+      {
+        title: 'Introduction to Docker and Kubernetes',
+        slug: 'intro-docker-kubernetes',
+        heroImage: createdMedia.find((m) => m.filename === 'devops-cover.jpg')?.id,
+        content: {
+          root: {
+            type: 'root',
+            children: [
+              {
+                type: 'paragraph',
+                children: [
+                  {
+                    type: 'text',
+                    text: 'Learn the basics of containerization with Docker and orchestration with Kubernetes to streamline your deployment process.',
+                  },
+                ],
+              },
+            ],
+          },
+        },
+        categories: [createdCategories.find((c) => c.slug === 'devops')?.id],
+        publishedAt: new Date('2025-04-22T00:00:00Z').toISOString(),
+        authors: [adminUser.id],
+        _status: 'published',
+      },
+      {
+        title: 'Getting Started with Machine Learning in JavaScript',
+        slug: 'machine-learning-javascript',
+        heroImage: createdMedia.find((m) => m.filename === 'ml-js-cover.jpg')?.id,
+        content: {
+          root: {
+            type: 'root',
+            children: [
+              {
+                type: 'paragraph',
+                children: [
+                  {
+                    type: 'text',
+                    text: 'Explore how to implement machine learning models directly in the browser using TensorFlow.js and other JavaScript libraries.',
+                  },
+                ],
+              },
+            ],
+          },
+        },
+        categories: [createdCategories.find((c) => c.slug === 'ai-ml')?.id],
+        publishedAt: new Date('2025-04-18T00:00:00Z').toISOString(),
+        authors: [adminUser.id],
+        _status: 'published',
+      },
+      {
+        title: 'UI/UX Design Trends for 2025',
+        slug: 'ui-ux-design-trends-2025',
+        heroImage: createdMedia.find((m) => m.filename === 'design-trends-cover.jpg')?.id,
+        content: {
+          root: {
+            type: 'root',
+            children: [
+              {
+                type: 'paragraph',
+                children: [
+                  {
+                    type: 'text',
+                    text: 'Stay ahead of the curve with these emerging UI/UX design trends that are shaping the digital landscape in 2025.',
+                  },
+                ],
+              },
+            ],
+          },
+        },
+        categories: [createdCategories.find((c) => c.slug === 'design')?.id],
+        publishedAt: new Date('2025-04-12T00:00:00Z').toISOString(),
+        authors: [adminUser.id],
+        _status: 'published',
+      },
+      {
+        title: 'Building a CI/CD Pipeline with GitHub Actions',
+        slug: 'cicd-github-actions',
+        heroImage: createdMedia.find((m) => m.filename === 'github-actions-cover.jpg')?.id,
+        content: {
+          root: {
+            type: 'root',
+            children: [
+              {
+                type: 'paragraph',
+                children: [
+                  {
+                    type: 'text',
+                    text: 'A step-by-step guide to setting up a continuous integration and deployment pipeline using GitHub Actions for your web projects.',
+                  },
+                ],
+              },
+            ],
+          },
+        },
+        categories: [createdCategories.find((c) => c.slug === 'devops')?.id],
+        publishedAt: new Date('2025-04-08T00:00:00Z').toISOString(),
+        authors: [adminUser.id],
+        _status: 'published',
+      },
+      {
+        title: 'Optimizing React Performance',
+        slug: 'optimizing-react-performance',
+        heroImage: createdMedia.find((m) => m.filename === 'react-performance-cover.jpg')?.id,
+        content: {
+          root: {
+            type: 'root',
+            children: [
+              {
+                type: 'paragraph',
+                children: [
+                  {
+                    type: 'text',
+                    text: 'Advanced techniques to optimize your React applications for better performance and user experience.',
+                  },
+                ],
+              },
+            ],
+          },
+        },
+        categories: [createdCategories.find((c) => c.slug === 'web-development')?.id],
+        publishedAt: new Date('2025-04-03T00:00:00Z').toISOString(),
+        authors: [adminUser.id],
+        _status: 'published',
+      },
+      {
+        title: 'Introduction to Large Language Models',
+        slug: 'intro-large-language-models',
+        heroImage: createdMedia.find((m) => m.filename === 'llm-cover.jpg')?.id,
+        content: {
+          root: {
+            type: 'root',
+            children: [
+              {
+                type: 'paragraph',
+                children: [
+                  {
+                    type: 'text',
+                    text: "Understanding the fundamentals of Large Language Models (LLMs) and how they're transforming software development.",
+                  },
+                ],
+              },
+            ],
+          },
+        },
+        categories: [createdCategories.find((c) => c.slug === 'ai-ml')?.id],
+        publishedAt: new Date('2025-03-28T00:00:00Z').toISOString(),
+        authors: [adminUser.id],
+        _status: 'published',
+      },
+      {
+        title: 'Building Responsive Layouts with CSS Grid',
+        slug: 'css-grid-responsive-layouts',
+        heroImage: createdMedia.find((m) => m.filename === 'css-grid-cover.jpg')?.id,
+        content: {
+          root: {
+            type: 'root',
+            children: [
+              {
+                type: 'paragraph',
+                children: [
+                  {
+                    type: 'text',
+                    text: 'Master CSS Grid to create complex, responsive layouts with less code and better maintainability.',
+                  },
+                ],
+              },
+            ],
+          },
+        },
+        categories: [createdCategories.find((c) => c.slug === 'web-development')?.id],
+        publishedAt: new Date('2025-03-22T00:00:00Z').toISOString(),
+        authors: [adminUser.id],
+        _status: 'published',
+      },
+    ]
+
+    for (const post of posts) {
+      await createOrUpdateByProps(
+        payload,
+        {
+          collection: 'posts',
+          data: post,
+        },
+        ['slug'],
+      )
+    }
+
     const projects = [
       {
         title: 'Wehelp',

@@ -97,7 +97,7 @@ export function Header() {
                 />
               </Link>
             </motion.div>
-            <motion.div
+            {/* <motion.div
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5 }}
@@ -113,7 +113,7 @@ export function Header() {
                   className={`absolute -bottom-1 left-0 h-0.5 bg-primary-500 transition-all ${isActive('/reviews') ? 'w-full' : 'w-0 group-hover:w-full'}`}
                 />
               </Link>
-            </motion.div>
+            </motion.div> */}
             <motion.div
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}

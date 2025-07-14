@@ -43,10 +43,21 @@ async function getPostsAndCategories(page: number = 1, limit: number = 10) {
   }
 }
 
-export default async function BlogPage() {
-  const page = 1
-  const limit = 2 // Default limit
-  const { posts, categories: payloadCategories } = await getPostsAndCategories(page, limit)
+export default async function BlogPage({
+  searchParams,
+  params,
+}: {
+  searchParams: {
+    limit?: string
+  }
+  params: {
+    category: string
+    page: string
+  }
+}) {
+  const { page, category: categorySlug } = await params
+  const { limit = 3 } = await searchParams // Default limit
+  const { posts, categories: payloadCategories } = await getPostsAndCategories(+page, +limit)
 
   const allCategories = [
     { name: 'All', slug: 'all' },
@@ -99,14 +110,16 @@ export default async function BlogPage() {
 
         {/* Category filters */}
         <div className="flex flex-wrap gap-2 pt-6">
-          {allCategories.map((category) => (
-            <Badge
-              key={category.slug}
-              variant={category.slug === 'all' ? 'default' : 'outline'}
-              className="cursor-pointer hover:bg-primary hover:text-primary-foreground transition-colors"
-            >
-              {category.name}
-            </Badge>
+          {allCategories.map((c) => (
+            <Link key={c.slug} href={`/blog/${c.slug}/1`}>
+              <Badge
+                key={c.slug}
+                variant={c.slug === categorySlug ? 'default' : 'outline'}
+                className="cursor-pointer hover:bg-primary hover:text-primary-foreground transition-colors"
+              >
+                {c.name}
+              </Badge>
+            </Link>
           ))}
         </div>
 
@@ -116,7 +129,7 @@ export default async function BlogPage() {
             <h2 className="text-2xl font-bold tracking-tight mb-6">Featured Articles</h2>
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
               {featuredPosts.map((post) => (
-                <BlogItem key={post.id} post={post} isFeatured={true} />
+                <BlogItem key={post.id} post={post} isFeatured={true} relationTo="post" />
               ))}
             </div>
           </div>
@@ -127,7 +140,7 @@ export default async function BlogPage() {
           <h2 className="text-2xl font-bold tracking-tight mb-6">All Articles</h2>
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {allPosts.docs.map((post) => (
-              <BlogItem key={post.id} post={post} />
+              <BlogItem key={post.id} post={post} relationTo="post" />
             ))}
           </div>
         </div>
@@ -135,7 +148,11 @@ export default async function BlogPage() {
         {/* Pagination */}
         <div className="flex justify-center items-center gap-2 mt-12">
           {posts.totalPages > 1 && posts.page && (
-            <Pagination page={posts.page} totalPages={posts.totalPages} routerPath="/blog" />
+            <Pagination
+              page={posts.page}
+              totalPages={posts.totalPages}
+              routerPath={`/blog/${categorySlug}`}
+            />
           )}
         </div>
 

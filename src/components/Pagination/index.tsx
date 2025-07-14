@@ -16,10 +16,12 @@ export const Pagination: React.FC<{
   className?: string
   page: number
   totalPages: number
+  routerPath?: string
+  searchParamName?: string
 }> = (props) => {
   const router = useRouter()
 
-  const { className, page, totalPages } = props
+  const { className, page, totalPages, routerPath, searchParamName = 'page' } = props
   const hasNextPage = page < totalPages
   const hasPrevPage = page > 1
 
@@ -34,7 +36,7 @@ export const Pagination: React.FC<{
             <PaginationPrevious
               disabled={!hasPrevPage}
               onClick={() => {
-                router.push(`/posts/page/${page - 1}`)
+                router.push(`${routerPath || '/posts/page'}/${page - 1}`)
               }}
             />
           </PaginationItem>
@@ -49,7 +51,7 @@ export const Pagination: React.FC<{
             <PaginationItem>
               <PaginationLink
                 onClick={() => {
-                  router.push(`/posts/page/${page - 1}`)
+                  router.push(`${routerPath || '/posts/page'}/${page - 1}`)
                 }}
               >
                 {page - 1}
@@ -61,7 +63,7 @@ export const Pagination: React.FC<{
             <PaginationLink
               isActive
               onClick={() => {
-                router.push(`/posts/page/${page}`)
+                router.push(`${routerPath || '/posts/page'}/${page - 1}`)
               }}
             >
               {page}
@@ -72,7 +74,7 @@ export const Pagination: React.FC<{
             <PaginationItem>
               <PaginationLink
                 onClick={() => {
-                  router.push(`/posts/page/${page + 1}`)
+                  router.push(`${routerPath || '/posts/page'}/${page - 1}`)
                 }}
               >
                 {page + 1}
@@ -90,7 +92,7 @@ export const Pagination: React.FC<{
             <PaginationNext
               disabled={!hasNextPage}
               onClick={() => {
-                router.push(`/posts/page/${page + 1}`)
+                router.push(`${routerPath || '/posts/page'}/${page - 1}`)
               }}
             />
           </PaginationItem>
