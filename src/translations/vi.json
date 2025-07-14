@@ -124,7 +124,7 @@
   "about.member2Description": "Trần Thị B là chuyên gia công nghệ với hơn 10 năm kinh nghiệm trong phát triển phần mềm. Cô ấy chịu trách nhiệm về chiến lược công nghệ và đảm bảo rằng chúng tôi luôn sử dụng các công nghệ tiên tiến nhất.",
   "about.member3Name": "Nguyễn Giang Sơn",
   "about.member3Position": "Lead Developer",
-  "about.member3Description": "Lê Văn C là một lập trình viên tài năng với chuyên môn trong ph��t triển web và ứng dụng di động. Anh ấy lãnh đạo đội ngũ phát triển và đảm bảo rằng mọi dự án đều được hoàn thành với chất lượng cao nhất.",
+  "about.member3Description": "Lê Văn C là một lập trình viên tài năng với chuyên môn trong phát triển web và ứng dụng di động. Anh ấy lãnh đạo đội ngũ phát triển và đảm bảo rằng mọi dự án đều được hoàn thành với chất lượng cao nhất.",
   "about.member4Name": "Phạm Thị D",
   "about.member4Position": "UI/UX Designer",
   "about.member4Description": "Phạm Thị D là một nhà thiết kế UI/UX tài năng với con mắt tinh tế cho thẩm mỹ và trải nghiệm người dùng. Cô ấy đảm bảo rằng mọi sản phẩm của chúng tôi không chỉ hoạt động tốt mà còn trông đẹp mắt và dễ sử dụng.",
@@ -215,6 +215,8 @@
   "contact.invalidPhone": "Số điện thoại không hợp lệ",
   "contact.followTitle": "Theo dõi chúng tôi",
   "contact.followDescription": "Kết nối với chúng tôi trên các mạng xã hội để cập nhật tin tức và sự kiện mới nhất.",
+  "contact.workingHours": "Giờ làm việc",
+  "contact.workingHoursText": "Thứ 2 đến Thứ 6, 8:00 - 18:00",
 
   "portfolio.title": "Dự án của chúng tôi",
   "portfolio.subtitle": "Các dự án tiêu biểu",

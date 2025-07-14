@@ -180,6 +180,8 @@
   "contact.invalidPhone": "Invalid phone number",
   "contact.followTitle": "Follow Us",
   "contact.followDescription": "Connect with us on social media to stay updated with our latest news and events.",
+  "contact.workingHours": "Working Hours",
+  "contact.workingHoursText": "Monday to Friday, 8:00 AM - 6:00 PM",
 
   "portfolio.title": "Our Projects",
   "portfolio.subtitle": "Featured Projects",

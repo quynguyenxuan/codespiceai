@@ -84,13 +84,36 @@ export default function ContactPageClient({
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     setIsSubmitting(true)
-    setTimeout(() => {
+    setFormStatus('idle')
+    const form = e.currentTarget
+    const formData = new FormData(form)
+    const data = {
+      name: formData.get('name') as string,
+      email: formData.get('email') as string,
+      company: formData.get('company') as string,
+      phone: formData.get('phone') as string,
+      subject: formData.get('subject') as string,
+      budget: formData.get('budget') as string,
+      message: formData.get('message') as string,
+    }
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      })
+      if (res.ok) {
+        setFormStatus('success')
+        form.reset()
+      } else {
+        setFormStatus('error')
+      }
+    } catch {
+      setFormStatus('error')
+    } finally {
       setIsSubmitting(false)
-      setFormStatus('success')
-      setTimeout(() => {
-        setFormStatus('idle')
-      }, 5000)
-    }, 1500)
+      setTimeout(() => setFormStatus('idle'), 5000)
+    }
   }
 
   const contactInfo: ContactInfo[] = initialContactInfo.map((info, i) => {
@@ -254,16 +277,16 @@ export default function ContactPageClient({
                     <label htmlFor="budget" className="text-sm font-medium">
                       {t('contact.budget')}
                     </label>
-                    <Select disabled={isSubmitting}>
+                    <Select name="budget" disabled={isSubmitting}>
                       <SelectTrigger>
                         <SelectValue placeholder={t('contact.budgetPlaceholder')} />
                       </SelectTrigger>
                       <SelectContent>
-                        <SelectItem value="under-5k">{t('contact.budget1')}</SelectItem>
+                        <SelectItem value="0-5k">{t('contact.budget1')}</SelectItem>
                         <SelectItem value="5k-10k">{t('contact.budget2')}</SelectItem>
                         <SelectItem value="10k-20k">{t('contact.budget3')}</SelectItem>
                         <SelectItem value="20k-50k">{t('contact.budget4')}</SelectItem>
-                        <SelectItem value="over-50k">{t('contact.budget5')}</SelectItem>
+                        <SelectItem value="50k-">{t('contact.budget5')}</SelectItem>
                       </SelectContent>
                     </Select>
                   </div>
