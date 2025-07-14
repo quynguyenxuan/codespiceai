@@ -233,6 +233,25 @@ export const Posts: CollectionConfig<'posts'> = {
   hooks: {
     afterChange: [revalidatePost],
     afterRead: [populateAuthors],
+    beforeRead: [
+      ({ req, query }) => {
+        if (req.query.search) {
+          const search = req.query.search as string
+          query.$or = [
+            {
+              title: {
+                like: `%${search}%`,
+              },
+            },
+            {
+              slug: {
+                like: `%${search}%`,
+              },
+            },
+          ]
+        }
+      },
+    ],
     afterDelete: [revalidateDelete],
   },
   versions: {

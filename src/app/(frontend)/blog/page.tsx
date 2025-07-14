@@ -6,6 +6,7 @@ import { BlogItem } from '@/components/BlogItem'
 import { Badge } from '@/components/ui/badge'
 import { Header } from '@/components/layout/header'
 import { Footer } from '@/components/layout/footer'
+import { BlogSearch } from '@/components/BlogSearch'
 import { getMetadata } from '@/utilities/getMetadata'
 import { getPayload } from 'payload'
 import config from '@/payload.config'
@@ -43,7 +44,20 @@ async function getPostsAndCategories(page: number = 1, limit: number = 10) {
   }
 }
 
-export default async function BlogPage() {
+export default async function BlogPage({
+  searchParams,
+  params: { lang, locale },
+}: {
+  searchParams: {
+    limit?: string
+    query?: string
+    search?: string
+  }
+  params: {
+    lang: string
+    locale: string
+  }
+}) {
   const page = 1
   const limit = 2 // Default limit
   const { posts, categories: payloadCategories } = await getPostsAndCategories(page, limit)
@@ -71,42 +85,20 @@ export default async function BlogPage() {
               Explore our latest articles, tutorials, and insights
             </p>
           </div>
-          <div className="flex items-center">
-            <div className="relative">
-              <input
-                type="text"
-                placeholder="Search articles..."
-                className="h-10 w-full rounded-md border border-input bg-background px-3 py-2 pr-10 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
-              />
-              <svg
-                className="absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <title>Search icon</title>
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                />
-              </svg>
-            </div>
-          </div>
+          <BlogSearch category="all" />
         </div>
-
         {/* Category filters */}
         <div className="flex flex-wrap gap-2 pt-6">
-          {allCategories.map((category) => (
-            <Badge
-              key={category.slug}
-              variant={category.slug === 'all' ? 'default' : 'outline'}
-              className="cursor-pointer hover:bg-primary hover:text-primary-foreground transition-colors"
-            >
-              {category.name}
-            </Badge>
+          {allCategories.map((c) => (
+            <Link key={c.slug} href={`/blog/${c.slug}/1`}>
+              <Badge
+                key={c.slug}
+                variant={c.slug === 'all' ? 'default' : 'outline'}
+                className="cursor-pointer hover:bg-primary hover:text-primary-foreground transition-colors"
+              >
+                {c.name}
+              </Badge>
+            </Link>
           ))}
         </div>
 
