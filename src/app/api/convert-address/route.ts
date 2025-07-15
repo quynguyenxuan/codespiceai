@@ -35,7 +35,7 @@ interface AddressMapping {
 
 // Hàm fetch mapping từ PayloadCMS REST API
 async function fetchAddressMappings(): Promise<AddressMapping[]> {
-  const urlBase = process.env.PAYLOAD_API_URL + '/api/address-mappings'
+  const urlBase = process.env.PAYLOAD_API_URL + '/address-mappings'
   let allDocs: AddressMapping[] = []
   let page = 1
   const limit = 10000
@@ -74,8 +74,8 @@ function getTopMatches(
   const inputDistrict = normalize(input.district)
   const inputProvince = normalize(input.province)
 
+  // Sử dụng fuzzy cho từng trường, ưu tiên ward
   const scored: Array<{ mapping: AddressMapping; score: number }> = []
-
   for (const m of mappings) {
     const candidates = [
       { ward: m.oldWard, district: m.oldDistrict, province: m.oldProvince },
@@ -83,21 +83,50 @@ function getTopMatches(
     ]
     let bestScore = -Infinity
     for (const c of candidates) {
+      // Fuzzy cho ward
+      const wardScore = inputWard
+        ? (fuzzysort.single(inputWard, normalize(c.ward))?.score ?? -1000)
+        : 0
+      // Fuzzy cho district
+      const districtScore = inputDistrict
+        ? (fuzzysort.single(inputDistrict, normalize(c.district))?.score ?? -1000)
+        : 0
+      // Fuzzy cho province
+      const provinceScore = inputProvince
+        ? (fuzzysort.single(inputProvince, normalize(c.province))?.score ?? -1000)
+        : 0
+      // Tổng điểm: ưu tiên ward > district > province
       let score = 0
-      if (normalize(c.ward) === inputWard && inputWard) score += 10
-      else if (inputWard && normalize(c.ward).includes(inputWard)) score += 5
-      if (normalize(c.district) === inputDistrict && inputDistrict) score += 5
-      else if (inputDistrict && normalize(c.district).includes(inputDistrict)) score += 2
-      if (normalize(c.province) === inputProvince && inputProvince) score += 3
-      else if (inputProvince && normalize(c.province).includes(inputProvince)) score += 1
+      if (wardScore > -1000) score += 1000 + wardScore * 2
+      if (districtScore > -1000) score += 500 + districtScore
+      if (provinceScore > -1000) score += 200 + provinceScore
       if (score > bestScore) bestScore = score
     }
     if (bestScore > 0) {
       scored.push({ mapping: m, score: bestScore })
     }
   }
-  // Sắp xếp theo điểm số giảm dần và lấy topN
-  return scored.sort((a, b) => b.score - a.score).slice(0, topN)
+  // Gom nhóm theo điểm số, lấy hết nhóm cao nhất, nếu chưa đủ thì lấy tiếp nhóm điểm thấp hơn cho đến khi đủ topN
+  scored.sort((a, b) => b.score - a.score)
+  const result: Array<{ mapping: AddressMapping; score: number }> = []
+  let i = 0
+  while (result.length < topN && i < scored.length) {
+    const currentScore = scored[i]?.score
+    if (currentScore === undefined) break
+    const sameScoreGroup = scored.filter((m) => m.score === currentScore && !result.includes(m))
+    for (const item of sameScoreGroup) {
+      const isDuplicate = result.some(
+        (r) =>
+          r.mapping.newWard === item.mapping.newWard &&
+          r.mapping.newProvince === item.mapping.newProvince,
+      )
+      if (!isDuplicate) {
+        result.push(item)
+      }
+    }
+    i += sameScoreGroup.length
+  }
+  return result.slice(0, Math.max(result.length, topN))
 }
 
 function buildDescription(m: any) {
@@ -120,7 +149,7 @@ export async function POST(req: NextRequest) {
     const matches = getTopMatches(input, addressMappings, 3)
     return {
       input: [input.ward, input.district, input.province].filter(Boolean).join(', '),
-      matches: matches.map(({ mapping, score }) => ({ ...mapping, score })),
+      matches: matches.map(({ mapping, score }) => ({ ...mapping, score: Math.round(score) })),
     }
   })
   return NextResponse.json({ results })

@@ -12,6 +12,7 @@ import { getPayload } from 'payload'
 import config from '@/payload.config'
 import { Post, Category } from '@/payload-types'
 import { Pagination } from '@/components/Pagination'
+import { Suspense } from 'react'
 
 export async function generateMetadata(): Promise<Metadata> {
   return await getMetadata({ slug: 'blog' })
@@ -85,7 +86,9 @@ export default async function BlogPage({
               Explore our latest articles, tutorials, and insights
             </p>
           </div>
-          <BlogSearch category="all" />
+          <Suspense>
+            <BlogSearch category="all" />
+          </Suspense>
         </div>
         {/* Category filters */}
         <div className="flex flex-wrap gap-2 pt-6">
