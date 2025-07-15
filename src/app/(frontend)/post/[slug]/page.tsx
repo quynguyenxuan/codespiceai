@@ -165,7 +165,9 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             </div>
           )}
         </article>
-        <h2 className="text-2xl font-bold tracking-tight mb-6">Related Articles</h2>
+        {relatedPosts.length > 0 && (
+          <h2 className="text-2xl font-bold tracking-tight mb-6">Related Articles</h2>
+        )}
         {/* Related Posts Section */}
         {relatedPosts.length > 0 && (
           <RelatedPosts

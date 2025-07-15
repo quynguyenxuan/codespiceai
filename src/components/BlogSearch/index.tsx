@@ -26,7 +26,7 @@ export const BlogSearch: React.FC<BlogSearchProps> = ({ category }) => {
     <form className="flex items-center" onSubmit={onSubmit}>
       <input
         type="text"
-        placeholder={t('search_articles')}
+        placeholder={'Tìm bài viết'}
         className="h-10 w-full rounded-md border border-input bg-background px-3 py-2 pr-10 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
         value={searchValue}
         onChange={(e) => setSearchValue(e.target.value)}

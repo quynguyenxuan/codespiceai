@@ -24,7 +24,7 @@ export function BlogItem({
   post,
   isFeatured = false,
   showCategories,
-  relationTo = 'blog',
+  relationTo = 'post',
 }: BlogItemProps) {
   const imageUrl = (post.heroImage as Media)?.url || '/placeholder.jpg'
   const categoryTitle = (post.categories?.[0] as Category)?.title || 'Uncategorized'
