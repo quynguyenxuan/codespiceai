@@ -1,8 +1,8 @@
-export const fadeIn = (direction: "up" | "down" | "left" | "right" = "up", delay = 0) => {
+export const fadeIn = (direction: 'up' | 'down' | 'left' | 'right' = 'up', delay = 0) => {
   return {
     hidden: {
-      y: direction === "up" ? 40 : direction === "down" ? -40 : 0,
-      x: direction === "left" ? 40 : direction === "right" ? -40 : 0,
+      y: direction === 'up' ? 40 : direction === 'down' ? -40 : 0,
+      x: direction === 'left' ? 40 : direction === 'right' ? -40 : 0,
       opacity: 0,
     },
     show: {
@@ -10,10 +10,10 @@ export const fadeIn = (direction: "up" | "down" | "left" | "right" = "up", delay
       x: 0,
       opacity: 1,
       transition: {
-        type: "spring",
+        type: 'spring',
         duration: 0.8,
         delay,
-        ease: [0.25, 0.25, 0.25, 0.75],
+        ease: 'easeInOut',
       },
     },
   }
@@ -41,7 +41,7 @@ export const textVariant = (delay = 0) => {
       y: 0,
       opacity: 1,
       transition: {
-        type: "spring",
+        type: 'spring',
         duration: 1.25,
         delay,
       },
@@ -49,11 +49,16 @@ export const textVariant = (delay = 0) => {
   }
 }
 
-export const slideIn = (direction: "up" | "down" | "left" | "right", type: string, delay: number, duration: number) => {
+export const slideIn = (
+  direction: 'up' | 'down' | 'left' | 'right',
+  type: string,
+  delay: number,
+  duration: number,
+) => {
   return {
     hidden: {
-      x: direction === "left" ? "-100%" : direction === "right" ? "100%" : 0,
-      y: direction === "up" ? "100%" : direction === "down" ? "-100%" : 0,
+      x: direction === 'left' ? '-100%' : direction === 'right' ? '100%' : 0,
+      y: direction === 'up' ? '100%' : direction === 'down' ? '-100%' : 0,
     },
     show: {
       x: 0,
@@ -62,7 +67,7 @@ export const slideIn = (direction: "up" | "down" | "left" | "right", type: strin
         type,
         delay,
         duration,
-        ease: "easeOut",
+        ease: 'easeOut',
       },
     },
   }
@@ -78,10 +83,10 @@ export const zoomIn = (delay: number, duration: number) => {
       scale: 1,
       opacity: 1,
       transition: {
-        type: "tween",
+        type: 'tween',
         delay,
         duration,
-        ease: "easeOut",
+        ease: 'easeOut',
       },
     },
   }
@@ -94,7 +99,7 @@ export const floatAnimation = {
     transition: {
       duration: 3,
       repeat: Number.POSITIVE_INFINITY,
-      repeatType: "loop",
+      repeatType: 'loop',
     },
   },
 }
@@ -106,7 +111,7 @@ export const pulseAnimation = {
     transition: {
       duration: 2,
       repeat: Number.POSITIVE_INFINITY,
-      repeatType: "loop",
+      repeatType: 'loop',
     },
   },
 }
@@ -118,7 +123,7 @@ export const rotateAnimation = {
     transition: {
       duration: 20,
       repeat: Number.POSITIVE_INFINITY,
-      ease: "linear",
+      ease: 'linear',
     },
   },
 }

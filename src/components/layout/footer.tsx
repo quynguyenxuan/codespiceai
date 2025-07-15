@@ -46,6 +46,7 @@ export function Footer() {
           strokeLinejoin="round"
           className="h-5 w-5"
         >
+          <title>Facebook</title>
           <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
         </svg>
       ),
@@ -66,6 +67,7 @@ export function Footer() {
           strokeLinejoin="round"
           className="h-5 w-5"
         >
+          <title>Instagram</title>
           <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
           <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
           <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
@@ -88,6 +90,7 @@ export function Footer() {
           strokeLinejoin="round"
           className="h-5 w-5"
         >
+          <title>Twitter</title>
           <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z" />
         </svg>
       ),
@@ -108,6 +111,7 @@ export function Footer() {
           strokeLinejoin="round"
           className="h-5 w-5"
         >
+          <title>LinkedIn</title>
           <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
           <rect width="4" height="12" x="2" y="9" />
           <circle cx="4" cy="4" r="2" />
@@ -130,6 +134,7 @@ export function Footer() {
           strokeLinejoin="round"
           className="h-5 w-5"
         >
+          <title>YouTube</title>
           <path d="M12 19c-2.3 0-6.4-.2-8.1-.6-.7-.2-1.2-.7-1.4-1.4-.3-1.1-.5-3.4-.5-5s.2-3.9.5-5c.2-.7.7-1.2 1.4-1.4C5.6 5.2 9.7 5 12 5s6.4.2 8.1.6c.7.2 1.2.7 1.4 1.4.3 1.1.5 3.4.5 5s-.2 3.9-.5 5c-.2.7-.7 1.2-1.4 1.4-1.7.4-5.8.6-8.1.6 0 0 0 0 0 0z" />
           <polygon points="10 15 15 12 10 9" />
         </svg>
@@ -158,7 +163,7 @@ export function Footer() {
               variants={fadeIn('right', 0.3)}
               className="text-white"
             >
-              <h3 className="text-2xl font-bold mb-4">{t('footer.subscribeTitle')}</h3>
+              <h3 className="text-2xl font-bold mb-4 text-white">{t('footer.subscribeTitle')}</h3>
               <p className="text-white/80 mb-6 max-w-md">{t('footer.subscribeText')}</p>
               <div className="flex flex-col sm:flex-row gap-2">
                 <Input
@@ -179,7 +184,7 @@ export function Footer() {
               variants={fadeIn('left', 0.3)}
               className="text-white"
             >
-              <h3 className="text-2xl font-bold mb-4">{t('footer.contactTitle')}</h3>
+              <h3 className="text-2xl font-bold mb-4 text-white">{t('footer.contactTitle')}</h3>
               <div className="space-y-4">
                 <div className="flex items-start">
                   <Phone className="h-5 w-5 text-primary-300 mt-1 mr-3" />
@@ -224,7 +229,7 @@ export function Footer() {
               <div className="flex space-x-4">
                 {socialLinks.map((link, index) => (
                   <motion.a
-                    key={index}
+                    key={`${link.label}-${index}`}
                     href={link.href}
                     whileHover={{ y: -5, scale: 1.1 }}
                     className="text-gray-500 hover:text-primary-500 dark:text-gray-400 dark:hover:text-primary-400"
@@ -249,7 +254,7 @@ export function Footer() {
               </h4>
               <ul className="space-y-2">
                 {quickLinks.map((link, index) => (
-                  <li key={index}>
+                  <li key={`${link.label}-${index}`}>
                     <Link
                       href={link.href}
                       className="text-gray-600 hover:text-primary-500 dark:text-gray-400 dark:hover:text-primary-400 transition-colors"
@@ -265,7 +270,7 @@ export function Footer() {
               </h4>
               <ul className="space-y-2">
                 {services.map((service, index) => (
-                  <li key={index}>
+                  <li key={`${service.label}-${index}`}>
                     <Link
                       href={service.href}
                       className="text-gray-600 hover:text-primary-500 dark:text-gray-400 dark:hover:text-primary-400 transition-colors"
@@ -290,7 +295,7 @@ export function Footer() {
               </h4>
               <ul className="space-y-2">
                 {resources.map((resource, index) => (
-                  <li key={index}>
+                  <li key={`${resource.label}-${index}`}>
                     <Link
                       href={resource.href}
                       className="text-gray-600 hover:text-primary-500 dark:text-gray-400 dark:hover:text-primary-400 transition-colors"

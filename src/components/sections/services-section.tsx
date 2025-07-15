@@ -110,7 +110,7 @@ function ServiceCard({ icon, title, description, index }: ServiceCardProps) {
   return (
     <motion.div
       variants={fadeIn('up', index * 0.1 + 0.3)}
-      className="group flex flex-col items-center space-y-2 rounded-lg border p-6 shadow-sm transition-all hover:shadow-lg hover:-translate-y-1"
+      className="group flex flex-col items-center space-y-2 rounded-lg border p-6 shadow-md transition-all hover:shadow-xl hover:-translate-y-1"
     >
       <motion.div
         whileHover={{ scale: 1.1, rotate: 5 }}
