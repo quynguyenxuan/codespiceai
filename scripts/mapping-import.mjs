@@ -3,7 +3,7 @@ import fs from 'fs'
 import path from 'path'
 import axios from 'axios'
 
-const API_URL = process.env.PAYLOAD_API_URL + '/api/address-mappings'
+const API_URL = process.env.PAYLOAD_API_URL + '/address-mappings'
 const TOKEN = process.env.PAYLOAD_API_TOKEN
 
 const provinces = JSON.parse(fs.readFileSync('data/provinces.json', 'utf-8'))
