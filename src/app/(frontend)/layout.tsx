@@ -6,6 +6,9 @@ import { GeistSans } from 'geist/font/sans'
 import { Inter } from 'next/font/google'
 import type React from 'react'
 
+import { StagewiseToolbar } from '@stagewise/toolbar-next'
+import { ReactPlugin } from '@stagewise-plugins/react'
+
 import { AdminBar } from '@/components/AdminBar'
 import { Providers } from '@/providers'
 import { InitTheme } from '@/providers/Theme/InitTheme'
@@ -42,6 +45,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
           {/* <Header /> */}
           {children}
           {/* <Footer /> */}
+          <StagewiseToolbar config={{ plugins: [ReactPlugin] }} />
         </Providers>
       </body>
     </html>
